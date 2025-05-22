@@ -1,11 +1,5 @@
 # TODO
-- Make a better polybar
-- make rofi a bit better use better fonts make rofi a bit transparent
-- made a mistake of making terminal a bit too transparent -- maybe a focus mode will work where the wallpaper will go away
-- lesson learned never use transparent windows too much that your focus degrades
-- check what's mate
+- make terminal blur transparent
 - configure neovim for dap
 - shifting neovim lsp from nodejs to rust(cargo)
-- install some fun cli tools (jp2a, cowsay, neofetch, figlet, fortune)
-- rewrite update_github to allow grep filtering and other filters
 - A notification system that notifies if a build is complete or if a process is completed in terminal

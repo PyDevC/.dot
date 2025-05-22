@@ -4,15 +4,14 @@ My New desktop look will be more work oriented
 starting from this commit () # will add later
 
 ## Key FEATURES
-- [ ] Eye pleasing
-- [ ] Ease of use
-- [ ] Less Search Fatigue
-- [ ] Multi Themes
-- [ ] Faster loading
-- [ ] Open Source softwares And Free
+- [x] Eye pleasing
+- [x] Ease of use
+- [x] Less Search Fatigue
+- [x] Faster loading
+- [x] Open Source softwares And Free
 - [ ] DOCS
 - [ ] Software compatiblity
 - [ ] Stress Handling
-- [ ] GNOME friendly
+- [ ] GNOME friendly -- not going to do that
 
 The system is going to be more lively now

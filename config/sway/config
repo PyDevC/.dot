@@ -146,7 +146,6 @@ exec swaybg -m fill -i ~/wallpaper/pc_split.jpg
 
 exec swaymsg "workspace 1; exec $file-manager"
 exec swaymsg "workspace 4; exec $term"
-exec swaymsg "workspace 5; exec ~/personal/softwares/MissionCenter-x86_64.AppImage"
 
 
 ### Window Rules

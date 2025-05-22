@@ -15,6 +15,8 @@ map({"i","c"}, "<C-c>", "<Esc>") -- changed my keybord keymappings to home row m
 -- I am removing this habit but you can keep it. Just uncomment the above two lines
 -- got habit again with :w
 
+map("x", "<leader>p", [["_dP]])
+
 map({"n", "v"}, "<leader>y", [["+y]])
 
 -- tmux-sessionizer

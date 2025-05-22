@@ -13,12 +13,12 @@
         "cpu",
         "memory",
         "tray",
-        "custom/lock",
+        "custom/lock"
     ],
     "sway/workspaces": {
         "format": "{name}: {icon}",
         "format-icons": {
-            "active": "",
+            "focused": "",
             "default": ""
         }
     },
@@ -38,7 +38,7 @@
     "clock": {
         "timezone": "India/Kolkata",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%d/%m/%Y - %H:%M:%S}"
+        "format": "{:%d - %H:%M:%S}"
     },
     "network": {
         "format-wifi": "󰤢 ",
