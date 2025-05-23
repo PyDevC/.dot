@@ -1,23 +1,23 @@
 * {
   font-family: Inconsolata LGC Nerd Font;
-  font-size: 20px;
+  font-size: 18px;
   min-height: 0;
-  padding-right: 2px;
-  padding-left: 2px;
+  padding-right: 0px;
+  padding-left: 0px;
   padding-bottom: 0px;
 }
 
 #waybar {
   background: transparent;
   color: #c6d0f5;
-  margin: 2px 2px;
+  margin: 0px 0px;
 }
 
 #workspaces {
   border-radius: 5px;
-  margin: 5px;
+  margin: 0px;
   background: #101010;
-  margin-left: 1rem;
+  margin-left: 5px;
 }
 
 #workspaces button {
@@ -49,11 +49,11 @@
 #custom-power {
   background-color: #101010;
   padding: 0.5rem 1rem;
-  margin: 5px 0;
+  margin: 1px 0;
 }
 
 #memory {
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 0px 0px 0px;
 }
 
 #clock {
@@ -95,14 +95,9 @@
 }
 
 #custom-lock {
-  border-radius: 5px 0px 0px 5px;
-  color: #babbf1;
-}
-
-#custom-power {
-  margin-right: 1rem;
   border-radius: 0px 5px 5px 0px;
-  color: #e78284;
+  margin-right: 5px;
+  color: #babbf1;
 }
 
 #tray {

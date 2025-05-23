@@ -60,7 +60,7 @@ blur_radius                 8
 blur_passes                 3
 blur                        enable
 
-for_window [app_id="ghostty"] blur true;
+for_window [app_id="ghostty"] blur true; opacity 0.7
 ### Sov
 
 exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500
@@ -145,7 +145,7 @@ font pango:Inconsolata LGC Nerd Font Mono 12
 exec waybar
 
 ## Wallpaper
-exec swaybg -m fill -i ~/wallpaper/pc_split.jpg
+exec swaybg -m fill -i ~/wallpaper/village_mountain.jpg
 
 ## Autostart Applications
 
@@ -194,6 +194,7 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position 
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+    bindsym $mod+Shift+r restart
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
