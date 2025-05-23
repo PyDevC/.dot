@@ -56,24 +56,11 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
 ### Appearance
 # Window background blur
-blur off
-blur_xray off
-blur_passes 2
-blur_radius 5
+blur_radius                 8
+blur_passes                 3
+blur                        enable
 
-shadows off
-shadows_on_csd off
-shadow_blur_radius 20
-shadow_color #0000007F
-
-# inactive window fade amount. 0.0 = no dimming, 1.0 = fully dimmed
-default_dim_inactive 0.0
-dim_inactive_colors.unfocused #000000FF
-dim_inactive_colors.urgent #900000FF
-
-# Move minimized windows into Scratchpad (enable|disable)
-scratchpad_minimize disable
-
+for_window [app_id="ghostty"] blur true;
 ### Sov
 
 exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500
