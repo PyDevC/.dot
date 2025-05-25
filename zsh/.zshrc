@@ -106,11 +106,4 @@ source $ZSH/oh-my-zsh.sh
 
 . ~/.zsh_profile # source zsh_profile
 
-# TODO: switch to cargo language servers
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-nvm use --lts --silent
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

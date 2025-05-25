@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     "modules-left": [
-        "sway/workspaces"
+        "hyprland/workspaces"
     ],
     "modules-center": [
         "clock"
@@ -15,10 +15,10 @@
         "tray",
         "custom/lock"
     ],
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "format": "{name}: {icon}",
         "format-icons": {
-            "focused": "",
+            "active": "",
             "default": ""
         }
     },

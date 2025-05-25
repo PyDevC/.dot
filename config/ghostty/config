@@ -3,13 +3,13 @@
 theme = rose-pine
 background = 000000
 
-font-family = Geist Mono
+theme = rose-pine-moon
+background = 000000
+#background-opacity = 0.75
+#background-blur = false
 
 shell-integration-features = no-cursor,no-sudo,no-title
 gtk-titlebar = false
-
-clipboard-paste-protection = false
-copy-on-select = false
 
 # what is a prefix?
 # keybind = ctrl+d=scroll_page_fractional:0.5
