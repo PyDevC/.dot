@@ -9,7 +9,6 @@ export CC="gcc"
 export CCL="clang-12" # changing cause many programs use CC=gcc
 export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dot
-export DEV_ENV=$HOME/build_desktop
 export EDITOR=$VIM
 
 addToPath() { 

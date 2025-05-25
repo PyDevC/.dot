@@ -48,4 +48,3 @@ fi
 
 sync-all ~/.dot/config $XDG_CONFIG_HOME
 sync-all ~/.dot/bin $HOME/bin
-sync-all ~/.dot/.local $HOME/build

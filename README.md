@@ -12,6 +12,5 @@ starting from this commit e98bea8
 - [ ] DOCS
 - [ ] Software compatiblity
 - [ ] Stress Handling
-- [ ] GNOME friendly -- not going to do that
 
 The system is going to be more lively now
