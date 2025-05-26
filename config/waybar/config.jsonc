@@ -38,8 +38,7 @@
     "clock": {
         "timezone": "Asia/Kolkata",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%d - %H:%M:%S}",
-        "interval": 1
+        "format": "{:%d - %H:%M}"
     },
     "network": {
         "format-wifi": "󰤢 ",
