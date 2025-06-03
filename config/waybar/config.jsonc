@@ -63,7 +63,7 @@
         ]
     },
     "memory": {
-        "interval": 30,
+        "interval": 1,
         "format": "  {used:0.01f}G/{total:0.01f}G"
     },
     "pulseaudio": {

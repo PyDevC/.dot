@@ -3,6 +3,8 @@
 My New desktop look will be more work oriented
 starting from this commit e98bea8
 
+> For actual productivity you should keep animations in hyprland config as `enable = no`
+
 ## Key FEATURES
 - [x] Eye pleasing
 - [x] Ease of use
