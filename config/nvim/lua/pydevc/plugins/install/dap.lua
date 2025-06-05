@@ -14,24 +14,19 @@ return {
 
       dap.adapters.python = {
         type = 'executable',
-        command = function()
-          local env = os.getenv('VIRTUAL_ENV')
-          if #env then
-            return env .. '/bin/python'
-          end
-          return 'usr/bin/python'
-        end,
+        command = '/usr/bin/python',
         args = { '-m', 'debugpy.adapter' },
       }
 
       dap.configurations.python = {
         {
+          justMyCode = false,
           type = 'python',
           request = 'launch',
           name = "Launch file",
           program = "${file}",
           pythonPath = function()
-            if #os.getenv('VIRTUAL_ENV') then
+            if not #os.getenv('VIRTUAL_ENV') then
               return '/usr/bin/python'
             end
             return os.getenv('VIRTUAL_ENV') .. "/bin/python"
@@ -58,9 +53,10 @@ return {
         end,
       }
 
-      vim.keymap.set("n", "<space>b", dap.toggle_breakpoint)
-      vim.keymap.set("n", "<space>gb", dap.run_to_cursor)
-      vim.keymap.set("n", "<space>dr", ":lua require('dap').run()<CR>")
+      vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint)
+      vim.keymap.set("n", "<leader>gb", dap.run_to_cursor)
+      vim.keymap.set("n", "<leader>dr", ":lua require('dap').run()<CR>")
+      vim.keymap.set("n", "<leader>dop", ui.open)
       vim.keymap.set("n", "<leader>dcl", ui.close)
 
       -- Eval var under cursor

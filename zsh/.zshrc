@@ -107,3 +107,5 @@ source $ZSH/oh-my-zsh.sh
 . ~/.zsh_profile # source zsh_profile
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
