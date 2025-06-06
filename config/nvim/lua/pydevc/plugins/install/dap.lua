@@ -12,6 +12,28 @@ return {
       local dap = require "dap"
       local ui = require "dapui"
 
+      dap.adapters.python = {
+        type = 'executable',
+        command = os.getenv('VIRTUAL_ENV') .. '/bin/python',
+        args = { '-m', 'debugpy.adapter' },
+      }
+
+      dap.configurations.python = {
+        {
+          type = 'python',
+          request = 'launch',
+          name = "Launch file",
+          program = "${file}",
+          pythonPath = function()
+            if not #os.getenv('VIRTUAL_ENV') then
+              print("NO VIRTUAL_ENV")
+              return '/usr/bin/python'
+            end
+            return os.getenv('VIRTUAL_ENV') .. "/bin/python"
+          end,
+        },
+      }
+
       require("dapui").setup()
 
       require("nvim-dap-virtual-text").setup {
