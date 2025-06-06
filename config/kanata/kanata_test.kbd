@@ -1,119 +1,115 @@
-#|
-kanata config
-
-Use L_ctrl, Space, Escape
-|#
-
+;; defsrc is still necessary
+;; The linux-dev list only for me remap according to your device or completly remove the list
 (defcfg
   linux-dev (
     /dev/input/by-id/usb-SIGMACHIP_USB_Keyboard-event-if01
     /dev/input/by-id/usb-SIGMACHIP_USB_Keyboard-event-kbd
   )
+  linux-unicode-u-code u
+  linux-unicode-termination space
   process-unmapped-keys yes
 )
 
-(defvar
-  tap-time 200
-  hold-time 200
-)
-
+;; Main layer which is required for all other layers
 (defsrc
 q w e r t y u i o p 
 caps lsft rsft a s d f g h j k l ;
 z x c v b n m , .
 )
 
-#|
-There are two types of switching
-Toggle
-Layer Switch
+(defvar
+;; Custom times according to fingers
 
-There are various types of tap interfaces:
-tap-hold
-tab-toggle
-tap-hold-release-timeout
-tap-hold-release-keys
-tap-hold-except-keys
-(defalias
-  ;; shifted keys
-  { S-[
-  } S-]
-  : S-;
-
-  ;; alias numbers as themselves for use in macro
-  8 8
-  0 0
+  strong-tap-time 200
+  strong-hold-time 200
+  weak-tap-time 200
+  weak-hold-time 200
 )
-;; `C-`, `A-`, `S-`, and `M-` for lctrl, lalt, lshift, lmeta, but are possible
-|#
 
 (defalias
-;; layers
 numlay (layer-switch num_mod) ;; switch to num layer
 norlay (layer-switch home_row) ;; switch to normal layer
 arrowlay (layer-switch arrow_mod) ;; switch to arrow layer
-numtog (layer-toggle num_mod) ;; toggle to num layer
+numtog (layer-toggle num_mod) ;; specially for the semicolon so that we can have quick access to num layer
+
+;; special characters for num layer shift fork behavior
+lparen (unicode "(" )
+rparen (unicode ")" )
+lbrac (unicode "[" )
+rbrac (unicode "]" )
+lcurly (unicode "{" )
+rcurly (unicode "}" )
+equal (unicode "=")
+dollar (unicode "$")
+at (unicode "@")
+;; alias for `
+tilde2 (unicode "`")
+
+;; Number alias for using numbers in config
+;; for using 1 just use @1
+ 0 0
+ 1 1
+ 2 2
+ 3 3
+ 4 4
+ 5 5
+ 6 6
+ 7 7
+ 8 8
+ 9 9
+
+;; shift behavior
+;; Uses  special characters for shift behavior
+ shift1 (fork 1 @equal (lsft rsft))
+ shift2 (fork 2 @lparen (lsft rsft))
+ shift3 (fork 3 @lbrac (lsft rsft))
+ shift4 (fork 4 @lcurly (lsft rsft))
+ shift5 (fork 5 @dollar(lsft rsft))
+ shift6 (fork 6 @at (lsft rsft))
+ shift7 (fork 7 @rcurly (lsft rsft))
+ shift8 (fork 8 @rbrac (lsft rsft))
+ shift9 (fork 9 @rparen (lsft rsft))
+ shift0 (fork 0 @tilde2 (lsft rsft))
 
 ;; home row mods
-  a (tap-hold $tap-time $hold-time a lmet)
-  s (tap-hold $tap-time $hold-time s lalt)
-  d (tap-hold $tap-time $hold-time d lsft)
-  f (tap-hold $tap-time $hold-time f lctl)
-  j (tap-hold $tap-time $hold-time j rctl)
-  k (tap-hold $tap-time $hold-time k rsft)
-  l (tap-hold $tap-time $hold-time l ralt)
-  ; (tap-hold 100 $hold-time ; @numtog)
+  a (tap-hold $weak-tap-time $weak-hold-time a lmet)
+  s (tap-hold $strong-tap-time $strong-hold-time s lalt)
+  d (tap-hold $strong-tap-time $strong-hold-time d lsft)
+  f (tap-hold $strong-tap-time $strong-hold-time f lctl)
+  j (tap-hold $strong-tap-time $strong-hold-time j rctl)
+  k (tap-hold $strong-tap-time $strong-hold-time k rsft)
+  l (tap-hold $strong-tap-time $strong-hold-time l ralt)
+  ; (tap-hold 100 $weak-hold-time ; rmet)
 
 ;; num row mods
-  na (tap-hold $tap-time $hold-time 1 lmet)
-  ns (tap-hold $tap-time $hold-time 2 lalt)
-  nd (tap-hold $tap-time $hold-time 3 lsft)
-  nf (tap-hold $tap-time $hold-time 4 lctl)
-  nj (tap-hold $tap-time $hold-time 7 rctl)
-  nk (tap-hold $tap-time $hold-time 8 rsft)
-  nl (tap-hold $tap-time $hold-time 9 ralt)
-  nn (tap-hold $tap-time $hold-time 0 @numtog)
+  na (tap-hold $weak-tap-time $weak-hold-time @shift1 lmet)
+  ns (tap-hold $strong-tap-time $strong-hold-time @shift2 lalt)
+  nd (tap-hold $strong-tap-time $strong-hold-time @shift3 lsft)
+  nf (tap-hold $strong-tap-time $strong-hold-time @shift4 lctl)
+  nj (tap-hold $strong-tap-time $strong-hold-time @shift7 rctl)
+  nk (tap-hold $strong-tap-time $strong-hold-time @shift8 rsft)
+  nl (tap-hold $strong-tap-time $strong-hold-time @shift9 ralt)
+  nn (tap-hold $weak-tap-time $weak-hold-time @shift0 rmet)
 
 ;; configure the switch buttons these are same for every layer
-  nlay (tap-hold 10 20 esc @numlay)
-  olay (tap-hold 1 20 _ @norlay)
-  alay (tap-hold 1 20 _ @arrowlay)
-
-;; configure num row
-1 1
-2 2 
-3 3 
-4 4 
-5 5 
-6 6
-7 7
-8 8
-9 9
-0 0
-
-;; special characters
-  lp S-0
-  rp S-9
-  lb S-[
-  rb S-]
-  ~ S-`
-  | S-\
+  nlay (tap-hold 10 20 _ @numtog)
+  olay (tap-hold 10 20 _ @norlay)
 )
 
 (deflayer home_row
 q w e r t y u i o p 
-@nlay @olay @alay @a @s @d @f _ _ @j @k @l @;
+@olay @nlay @nlay @a @s @d @f _ _ @j @k @l @;
 z x c v b n m , .
 )
 
-(deflayer num_mod 
-@~ @| @lp @rp @lb @rb [ ] o p
-@nlay @olay @alay @na @ns @nd @nf 5 6 @nj @nk @nl @nn
-z x c v b n m , .
+(deflayer num_mod
+q w e r t y u i o p 
+@olay @nlay @nlay @na @ns @nd @nf @shift5 @shift6 @nj @nk @nl @nn
+- + \ [ ] { } ` /
 )
 
 (deflayer arrow_mod
 q w e r t y u up o p 
-@nlay @olay @alay @a @s @d @f _ _ left down rght @;
+@olay @nlay @nlay @a @s @d @f _ _ left down rght @;
 z x c v b n m , .
 )
