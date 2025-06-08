@@ -1,0 +1,120 @@
+;; defsrc is still necessary
+(defcfg
+  linux-dev (
+    /dev/input/by-id/usb-SIGMACHIP_USB_Keyboard-event-if01
+    /dev/input/by-id/usb-SIGMACHIP_USB_Keyboard-event-kbd
+  )
+  linux-unicode-u-code u
+  linux-unicode-termination space
+  process-unmapped-keys yes
+)
+
+(defsrc
+ q w e r t y u i o p 
+ caps lsft rsft a s d f g h j k l ;
+z x c v b n m , .
+)
+
+(defvar
+  tap-time 200
+  hold-time 200
+)
+
+(defalias
+numlay (layer-switch num_mod) ;; switch to num layer
+norlay (layer-switch home_row) ;; switch to normal layer
+arrowlay (layer-switch arrow_mod) ;; switch to arrow layer
+numtog (layer-toggle num_mod)
+
+;; special characters for num layer shift fork behavior
+lparen (unicode "(" )
+rparen (unicode ")" )
+lbrac (unicode "[" )
+rbrac (unicode "]" )
+lcurly (unicode "{" )
+rcurly (unicode "}" )
+equal (unicode "=")
+hash (unicode "#")
+at (unicode "@")
+
+ 0 0
+ 1 1
+ 2 2
+ 3 3
+ 4 4
+ 5 5
+ 6 6
+ 7 7
+ 8 8
+ 9 9
+
+;; shift behavior
+;; Uses  special characters for shift behavior
+ shift1 (fork 1 @equal (lsft rsft))
+ shift2 (fork 2 @lparen (lsft rsft))
+ shift3 (fork 3 @lbrac (lsft rsft))
+ shift4 (fork 4 @lcurly (lsft rsft))
+ shift5 (fork 5 @hash (lsft rsft))
+ shift6 (fork 6 @at (lsft rsft))
+ shift7 (fork 7 @rcurly (lsft rsft))
+ shift8 (fork 8 @rbrac (lsft rsft))
+ shift9 (fork 9 @rparen (lsft rsft))
+
+;; home row mods
+  a (tap-hold $tap-time $hold-time a lmet)
+  s (tap-hold $tap-time $hold-time s lalt)
+  d (tap-hold $tap-time $hold-time d lsft)
+  f (tap-hold $tap-time $hold-time f lctl)
+  j (tap-hold $tap-time $hold-time j rctl)
+  k (tap-hold $tap-time $hold-time k rsft)
+  l (tap-hold $tap-time $hold-time l ralt)
+  ; (tap-hold 100 $hold-time ; @numtog)
+
+;; num row mods
+  na (tap-hold $tap-time $hold-time @shift1 lmet)
+  ns (tap-hold $tap-time $hold-time @shift2 lalt)
+  nd (tap-hold $tap-time $hold-time @shift3 lsft)
+  nf (tap-hold $tap-time $hold-time @shift4 lctl)
+  nj (tap-hold $tap-time $hold-time @shift7 rctl)
+  nk (tap-hold $tap-time $hold-time @shift8 rsft)
+  nl (tap-hold $tap-time $hold-time @shift9 ralt)
+  nn (tap-hold $tap-time $hold-time 0 @numtog)
+
+;; configure the switch buttons these are same for every layer
+  nlay (tap-hold 10 20 esc @numlay)
+  olay (tap-hold 1 20 _ @norlay)
+  alay (tap-hold 1 20 _ @arrowlay)
+
+;; special characters
+  { S-[
+  } S-]
+  | S-\
+  ~ S-`
+  ^ S-6
+  % S-5
+  ! S-1
+  * S-8
+  $ S-4
+
+
+  lp1 (unicode "(" )
+  rp1 (unicode ")" )
+)
+
+(deflayer home_row
+q w e r t y u i o p 
+@nlay @olay @alay @a @s @d @f _ _ @j @k @l @;
+z x c v b n m , .
+)
+
+(deflayer num_mod
+@~ @| / @^ @% @* @$ @! ' p 
+@nlay @olay @alay @na @ns @nd @nf @shift5 @shift6 @nj @nk @nl @nn
+- + \ [ ] { } ` /
+)
+
+(deflayer arrow_mod
+q w e r t y u up o p 
+@nlay @olay @alay @a @s @d @f _ _ left down rght @;
+z x c v b n m , .
+)
