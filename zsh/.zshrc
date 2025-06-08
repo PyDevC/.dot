@@ -71,7 +71,7 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # plugins=(git)
-plugins=(git fast-syntax-highlighting)
+plugins=(git) 
 
 source $ZSH/oh-my-zsh.sh
 
@@ -107,5 +107,3 @@ source $ZSH/oh-my-zsh.sh
 . ~/.zsh_profile # source zsh_profile
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

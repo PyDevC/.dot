@@ -11,6 +11,10 @@ export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dot
 export EDITOR=$VIM
 
+if [[ -z "$VIRTUAL_ENV" ]]; then
+    export VIRTUAL_ENV=/usr/env/python
+fi
+
 addToPath() { 
     # adds at the back of the path thus getting lower priority if something having same name is in front of the path
     if [[ "$PATH" != *"$1"* ]]; then
