@@ -1,12 +1,9 @@
 VIM="nvim"
-alias vim="nvim"
 
 PERSONAL=$HOME/personal # used in rare cases when I don't want to mention where my personal folder
 
 export XDG_CONFIG_HOME=$HOME/.config
 
-export CC="gcc"
-export CCL="clang-12" # changing cause many programs use CC=gcc
 export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dot
 export EDITOR=$VIM
