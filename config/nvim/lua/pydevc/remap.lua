@@ -8,8 +8,11 @@ local function map(mode, lhs, rhs, opt)
 end
 
 -- map("n", "<leader>pv", vim.cmd.Ex) -- stay just in case i delete oil.lua
-map({"i","c"}, "<C-c>", "<Esc>") -- changed my keybord keymappings to home row mod
 
+-- map("i", "jk", "<Esc>")
+map({"i","c"}, "<C-c>", "<Esc>") -- changed my keyboard keymappings to home row mod
+
+-- map("i", "jk", <Esc>) -- just in case I switch to normal keyboard
 -- Basic commands
 --map("n", "<leader>w", "<CMD>w<CR>")
 -- I am removing this habit but you can keep it. Just uncomment the above two lines
