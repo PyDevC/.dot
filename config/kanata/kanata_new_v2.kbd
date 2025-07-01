@@ -95,6 +95,8 @@ at (unicode "@")
   ! S-1
   * S-8
   $ S-4
+  _ S--
+  + S-=
 
 
   lp1 (unicode "(" )
@@ -110,7 +112,7 @@ z x c v b n m , .
 (deflayer num_mod
 @~ @| / @^ @% @* @$ @! ' p 
 @nlay @olay @alay @na @ns @nd @nf @shift5 @shift6 @nj @nk @nl @nn
-- + \ [ ] { } ` /
+- + / @_ @+ \ ` , .
 )
 
 (deflayer arrow_mod
