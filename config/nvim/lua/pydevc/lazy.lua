@@ -21,6 +21,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	spec = {
 		{ import = "pydevc.plugins.install" },
+    { import = "pydevc.plugins.lazyloading" },
 	},
 	checker = {
 		enabled = true,
