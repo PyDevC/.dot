@@ -36,7 +36,7 @@ map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
 map("n", "=ap", "ma=ap'a")
 
-
+-- what are these used for???
 map("n", "<C-n>", "<cmd>cnext<CR>zz")
 map("n", "<C-j>", "<cmd>cprev<CR>zz")
 map("n", "<leader>k", "<cmd>lnext<CR>zz")

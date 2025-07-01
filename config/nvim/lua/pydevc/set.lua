@@ -12,6 +12,7 @@ vim.opt.icon = true                -- still thinking
 vim.opt.inccommand = "split"       -- forgot what was it?
 vim.opt.incsearch = true
 vim.opt.isfname:append("@-@")
+vim.opt.linebreak = true
 vim.opt.mouse = "a"                -- global
 vim.opt.nu = true
 vim.opt.relativenumber = true
