@@ -9,6 +9,8 @@
     ],
     "modules-right": [
         "pulseaudio",
+        "custom/volumeup",
+        "custom/volumedown",
         "network",
         "cpu",
         "memory",
@@ -77,6 +79,16 @@
             ]
         },
         "on-click": "pavucontrol"
+    },
+    "custom/volumeup": {
+        "format": "+ {}",
+        "tooltip": false,
+        "on-click": "amixer sset Master 5%+"
+    },
+    "custom/volumedown": {
+        "format": "- {}",
+        "tooltip": false,
+        "on-click": "amixer sset Master 5%-"
     },
     "custom/lock": {
         "tooltip": false,

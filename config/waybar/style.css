@@ -46,10 +46,15 @@
 #cpu,
 #memory,
 #custom-lock,
+#custom-volumeup,
+#custom-volumedown,
 #custom-power {
   background-color: #101010;
   padding: 0.5rem 1rem;
   margin: 1px 0;
+}
+#network{
+  border-radius: 5px 0px 0px 5px;
 }
 
 #memory {
@@ -98,6 +103,40 @@
   border-radius: 0px 5px 5px 0px;
   margin-right: 5px;
   color: #babbf1;
+}
+
+#custom-volumeup {
+  color: #babbf1;
+  padding: 10px 5px 10px 15px
+}
+
+#custom-volumeup.active {
+  color: #99d1db;
+}
+
+#custom-volumeup:hover {
+  color: #101010;
+  background-color: #85c1dc;
+}
+
+#custom-volumedown{
+  border-radius: 0px 5px 5px 0px;
+  margin-right: 5px;
+  color: #babbf1;
+  padding: 10px 5px 10px 15px
+}
+
+#custom-volumedown.active {
+  border-radius: 0px 5px 5px 0px;
+  margin-right: 5px;
+  color: #99d1db;
+}
+
+#custom-volumedown:hover {
+  border-radius: 0px 5px 5px 0px;
+  margin-right: 5px;
+  color: #101010;
+  background-color: #85c1dc;
 }
 
 #tray {
