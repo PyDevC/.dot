@@ -1,1 +1,2 @@
 config/nvim/lua/pydevc/plugins/install/local.lua
+bin/kanata
