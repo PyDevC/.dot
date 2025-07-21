@@ -1,6 +1,6 @@
 * {
   font-family: Inconsolata LGC Nerd Font;
-  font-size: 18px;
+  font-size: 16px;
   min-height: 0;
   padding-right: 0px;
   padding-left: 0px;
@@ -9,12 +9,12 @@
 
 #waybar {
   background: transparent;
-  color: #c6d0f5;
+  color: #ffffff;
   margin: 2px 2px;
 }
 
 #workspaces {
-  border-radius: 5px;
+  border-radius: 20px;
   margin: 2px;
   background: #101010;
   margin-left: 5px;
@@ -22,22 +22,23 @@
 
 #workspaces button {
   color: #babbf1;
-  border-radius: 5px;
+  border-radius: 20px; 
   padding: 0.4rem;
 }
 
 #workspaces button.active {
   color: #99d1db;
-  border-radius: 5px;
+  border-radius: 20px; 
 }
 
 #workspaces button:hover {
   color: #85c1dc;
-  border-radius: 5px;
+  border-radius: 20px; 
 }
 
 #custom-music,
 #tray,
+#bluetooth,
 #backlight,
 #clock,
 #battery,
@@ -51,10 +52,10 @@
 #custom-power {
   background-color: #101010;
   padding: 0.5rem 1rem;
-  margin: 1px 0;
+  margin: 2px 0;
 }
 #network{
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 20px 0px 0px 20px;
 }
 
 #memory {
@@ -88,10 +89,11 @@
   border-radius: 0;
 }
 
+#bluetooth{
+  border-radius: 20px 0px 0px 20px;
+}
 #pulseaudio {
   color: #ea999c;
-  border-radius: 5px 0px 0px 5%;
-  margin-left: 1rem;
 }
 
 #custom-music {
@@ -120,20 +122,20 @@
 }
 
 #custom-volumedown{
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 20px 20px 0px;
   margin-right: 5px;
   color: #babbf1;
   padding: 10px 5px 10px 15px
 }
 
 #custom-volumedown.active {
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 20px 20px 0px;
   margin-right: 5px;
   color: #99d1db;
 }
 
 #custom-volumedown:hover {
-  border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 20px 20px 0px;
   margin-right: 5px;
   color: #101010;
   background-color: #85c1dc;
@@ -144,4 +146,3 @@
   margin-left: 1rem;
   border-radius: 5px;
 }
-

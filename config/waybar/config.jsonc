@@ -8,6 +8,7 @@
         "clock"
     ],
     "modules-right": [
+        "bluetooth",
         "pulseaudio",
         "custom/volumeup",
         "custom/volumedown",
@@ -37,22 +38,45 @@
         "on-click": "playerctl play-pause",
         "max-length": 50
     },
+    "bluetooth": {
+        "format": "",
+        "format-disabled": "",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias} {device_battery_percentage}%",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%"
+    },
     "clock": {
         "timezone": "Asia/Kolkata",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-        "format": "{:%d - %H:%M}"
+        "format": "{:%d - %H:%M}",
+        "calendar": {
+            "mode": "month",
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": { // will change color later
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        }
     },
     "network": {
         "format-wifi": "󰤢 ",
         "format-ethernet": "󰈀 ",
         "format-disconnected": "󰤠 ",
+        "format-disabled": "󰤠 ",
         "interval": 5,
-        "tooltip": false,
+        "tooltip-format": "{essid}",
         "on-click": "~/.config/rofi/rofi-wifi-menu.sh"
     },
     "cpu": {
         "interval": 1,
-        "format": "  {icon0}{icon1}{icon2}{icon3} {usage:>2}%",
+        "format": "  {icon0}{icon1} {usage:>2}%",
         "format-icons": [
             "▁",
             "▂",
@@ -62,7 +86,8 @@
             "▆",
             "▇",
             "█"
-        ]
+        ],
+        "on-click": "ghostty -e btop" // Experimental
     },
     "memory": {
         "interval": 1,
