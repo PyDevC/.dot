@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+ 
+remoterepo="$(git remote -v | grep "pytorch" )"
+
+if [[ -z "$remoterepo" ]];then
+    echo "NOT pytorch"
+    exit 0
+fi
+
+if [[ -z $VIRTUAL_ENV ]]; then
+    echo "activate virtualenv"
+    exit 0
+fi
+
+files=`git status | grep "modified" | awk '{printf $2 " "}' | tr ' ' '\n'`
+
+for file in $files; do
+    echo "Linting: $file"
+    lintrunner $file
+    lintrunner -a
+done
+
+git $@
