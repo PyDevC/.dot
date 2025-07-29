@@ -2,7 +2,8 @@
     "layer": "top",
     "position": "top",
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "custom/music"
     ],
     "modules-center": [
         "clock"
@@ -30,7 +31,7 @@
         "spacing": 10
     },
     "custom/music": {
-        "format": "  {}",
+        "format": "{}",
         "escape": true,
         "interval": 5,
         "tooltip": false,
@@ -104,6 +105,11 @@
             ]
         },
         "on-click": "pavucontrol"
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
     },
     "custom/volumeup": {
         "format": "+ {}",
