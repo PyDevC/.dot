@@ -1,11 +1,12 @@
 # JET Engine
 
 My New desktop look will be more work oriented
-starting from this commit e98bea8
+starting from this commit [e98bea8]
 
 > For actual productivity you should keep animations in hyprland config as `enable = no`
 
 ## Key FEATURES
+- [ ] Move it to quickshell, make it the greatest rice ever
 - [x] Eye pleasing
 - [x] Ease of use
 - [x] Less Search Fatigue
