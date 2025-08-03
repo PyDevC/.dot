@@ -4,10 +4,17 @@ if [ -z $QSMain ]; then
     echo "set QSMain=<reponame>"
     exit 0
 fi
-mv ~/.config/quickshell ~/.config/quickshell.bak/
-mkdir -p ~/.config/quickshell
+
+if [[ -d ~/.config/quickshell ]]; then
+    # Backup previous config
+    mv ~/.config/quickshell ~/.config/quickshell.bak/
+fi
+
+pushd $HOME/.config
+
 echo "Moving"
-cp -r $QSMain ~/.config/quickshell
+cp -r $QSMain/src ~/.config
+mv ~/.config/src ~/.config/quickshell
 echo "Moved"
 
-qs
+popd
