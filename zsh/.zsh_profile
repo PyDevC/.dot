@@ -46,5 +46,5 @@ alias cdf='cd $(fuzzy file)'
 alias gfzf='git_fzf'
 
 
-alias wach="find $HOME/personal/contrib/unixsoul-dk/Wallpapers-main -name '*.jpg' -exec basename {} \; | rofi -dmenu -theme $HOME/.config/rofi/launchers/colorful/style_9.rasi | xargs -i swww img -t grow $HOME/personal/contrib/unixsoul-dk/Wallpapers-main/{}"  # rofi wallpaper selector
+alias wach="ls $HOME/personal/contrib/unixsoul-dk/Wallpapers-main | rofi -dmenu -theme $HOME/.config/rofi/launchers/colorful/style_9.rasi | xargs -i swww img -t grow $HOME/personal/contrib/unixsoul-dk/Wallpapers-main/{}"  # rofi wallpaper selector
 alias penv='. ~/personal/env/python/$(find ~/personal/env/python -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | fzf)/bin/activate'
