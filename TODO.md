@@ -1,1 +1,3 @@
 # TODO
+
+- Fix git history

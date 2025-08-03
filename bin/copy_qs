@@ -5,10 +5,7 @@ if [ -z $QSMain ]; then
     exit 0
 fi
 
-if [[ -d ~/.config/quickshell ]]; then
-    # Backup previous config
-    mv ~/.config/quickshell ~/.config/quickshell.bak/
-fi
+mv ~/.config/quickshell ~/.config/quickshell.bak/
 
 pushd $HOME/.config
 
