@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -z $QSMain ]; then
+    echo "set QSMain=<reponame>"
+    exit 0
+fi
 mv ~/.config/quickshell ~/.config/quickshell.bak/
 mkdir -p ~/.config/quickshell
 echo "Moving"
