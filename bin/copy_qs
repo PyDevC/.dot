@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+mv ~/.config/quickshell ~/.config/quickshell.bak/
+mkdir -p ~/.config/quickshell
+echo "Moving"
+cp -r $QSMain ~/.config/quickshell
+echo "Moved"
+
+qs
