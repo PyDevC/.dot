@@ -23,7 +23,6 @@ return {
 
       local lspconfig = require "lspconfig"
       local servers = {
-        qmlls = true,
         lua_ls = true,
         pyright = true,
 

@@ -1,7 +1,5 @@
 VIM="nvim"
 
-PERSONAL=$HOME/personal # used in rare cases when I don't want to mention where my personal folder
-
 export XDG_CONFIG_HOME=$HOME/.config
 
 export GIT_EDITOR=$VIM
