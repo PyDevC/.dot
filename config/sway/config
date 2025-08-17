@@ -15,12 +15,16 @@ set $right l
 set $term ghostty
 
 # Your preferred application launcher
-set $menu rofi -show drun
+set $menu wofi --show drun
 
 # File Manager
 set $file-manager thunar
 
 set $web-browser ~/personal/softwares/zen/zen
+
+blur_radius                 10
+blur_passes                 8
+blur                        enable
 
 # lock screen
 set $lock 'swaylock \
@@ -49,6 +53,8 @@ set $lock 'swaylock \
 # Set XDG_CURRENT_DESKTOP for proper Wayland support
 exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
+exec --no-startup-id swww-daemon
+exec --no-startup-id swww img ~/personal/contrib/unixsoul-dk/Wallpapers-main/0060.jpg
 
 # Start xdg-desktop-portal services (ensure wlr starts first)
 exec --no-startup-id /usr/lib/xdg-desktop-portal-wlr &
@@ -56,11 +62,7 @@ exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 
 ### Appearance
 # Window background blur
-blur_radius                 8
-blur_passes                 3
-blur                        enable
-
-for_window [app_id="ghostty"] blur true; opacity 0.7
+for_window [app_id="ghostty"] blur true; opacity 0.8
 ### Sov
 
 exec rm -f /tmp/sovpipe && mkfifo /tmp/sovpipe && tail -f /tmp/sovpipe | sov -t 500
@@ -144,9 +146,6 @@ font pango:Inconsolata LGC Nerd Font Mono 12
 ## Waybar
 exec waybar
 
-## Wallpaper
-exec swaybg -m fill -i ~/wallpaper/village_mountain.jpg
-
 ## Autostart Applications
 
 exec swaymsg "workspace 1; exec $file-manager"
@@ -197,7 +196,7 @@ for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position 
     bindsym $mod+Shift+r restart
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaymsg exit
 #
 # Moving around:
 #
@@ -345,10 +344,6 @@ client.unfocused $bg0 $bg1 $gray $bg0 $bg1
 # Urgent window (e.g., alerts)
 client.urgent $yellow $bg1 $fg $yellow $yellow
 
-
-gaps inner 5
-
-# Borders and Gaps.
 
 default_border pixel 0
 
