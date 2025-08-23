@@ -1,2 +1,2 @@
-config/nvim/lua/pydevc/plugins/install/local.lua
+config/nvim/lua/pydevc/plugins/lazyloading/local.lua
 bin/kanata
