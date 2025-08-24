@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+source ~/miniconda/bin/activate
+conda activate torch-dev-setup
+penv
