@@ -1,0 +1,75 @@
+/* Import a modern monospace font */
+* {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 14px;
+  color: #f8f8f2;
+}
+
+/* Slide-in animation */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+/* Fade-out animation (optional) */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Notification container */
+.notification {
+  background-color: rgba(40, 42, 54, 0.92); /* dark translucent */
+  border-radius: 12px;
+  border: 2px solid #44475a;
+  margin: 10px;
+  padding: 16px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+  animation: slide-in 0.35s ease-out;
+}
+
+/* Urgency styles */
+.notification.low {
+  border-color: #6272a4;
+}
+
+.notification.normal {
+  border-color: #8be9fd;
+}
+
+.notification.critical {
+  border-color: #ff5555;
+}
+
+/* Icon and text spacing */
+.icon {
+  margin-right: 10px;
+}
+
+.body {
+  margin-top: 6px;
+}
+
+.action-button {
+  background-color: #44475a;
+  color: #f8f8f2;
+  padding: 6px 12px;
+  margin: 8px 4px 0 0;
+  border-radius: 6px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.action-button:hover {
+  background-color: #6272a4;
+}
+

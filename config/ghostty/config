@@ -9,7 +9,7 @@ confirm-close-surface=false
 
 shell-integration-features = no-cursor,no-sudo,no-title
 gtk-titlebar = false
-font-size = 12.5
+font-size = 13
 # what is a prefix?
 # keybind = ctrl+d=scroll_page_fractional:0.5
 # keybind = ctrl+u=scroll_page_fractional:-0.5

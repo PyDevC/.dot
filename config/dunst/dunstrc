@@ -1,0 +1,74 @@
+[global]
+    monitor = 0
+    follow = mouse
+    geometry = "300x5-20+20"
+    indicate_hidden = yes
+    shrink = no
+    transparency = 10
+    notification_height = 0
+    separator_height = 2
+    padding = 16
+    horizontal_padding = 16
+    frame_width = 2
+    frame_color = "#44475a"
+    separator_color = frame
+    corner_radius = 10
+
+    font = JetBrains Mono 10
+    line_height = 0
+
+    idle_threshold = 120
+
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    show_age_threshold = 60
+    word_wrap = yes
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+
+    show_indicators = yes
+    icon_position = left
+    max_icon_size = 48
+
+    sticky_history = yes
+    history_length = 20
+    always_run_script = true
+
+    title = Dunst
+    class = Dunst
+
+    startup_notification = false
+    verbosity = mesg
+    corner_radius = 10
+
+    # D-Bus settings
+    dmenu = dmenu -p dunst:
+
+    browser = firefox
+    mouse_left_click = close_current
+    mouse_middle_click = do_action
+    mouse_right_click = close_all
+
+[urgency_low]
+    background = "#282a36"
+    foreground = "#6272a4"
+    timeout = 4
+
+[urgency_normal]
+    background = "#282a36"
+    foreground = "#f8f8f2"
+    timeout = 6
+
+[urgency_critical]
+    background = "#ff5555"
+    foreground = "#f8f8f2"
+    frame_color = "#ff5555"
+    timeout = 0
+
+# Optional: rules for certain apps
+# [rules]
+# appname = Spotify
+# timeout = 10
