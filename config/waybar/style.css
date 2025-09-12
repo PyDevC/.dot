@@ -1,169 +1,45 @@
+@define-color foreground #9a9c9b;
+@define-color foreground-inactive #ffffff;
+@define-color background #131926;
+
 * {
-  font-family: Inconsolata LGC Nerd Font;
-  font-size: 16px;
-  min-height: 0;
-  padding-right: 0px;
-  padding-left: 0px;
-  padding-bottom: 0px;
+    font-family: Mononoki Nerd Font;
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
 }
 
 #waybar {
-  background: transparent;
-  color: #ffffff;
-  margin: 2px 2px;
-}
-
-#workspaces {
-  border-radius: 20px;
-  margin: 2px;
-  background: #101010;
-  margin-left: 5px;
+    color: @foreground;
+    background-color: transparent;
 }
 
 #workspaces button {
-  color: #babbf1;
-  border-radius: 20px; 
-  padding: 0.4rem;
+    padding-left: 0.4em;
+    padding-right: 0.4em;
+    border-radius: 0px;
+    background-color: @background;
+}
+
+#workspaces button.empty {
+    color: @foreground-inactive;
 }
 
 #workspaces button.active {
-  color: #99d1db;
-  border-radius: 20px; 
+    color: @foreground;
 }
 
-#workspaces button:hover {
-  color: #85c1dc;
-  border-radius: 20px; 
-}
-
-#custom-music,
 #tray,
-#bluetooth,
-#backlight,
-#clock,
-#battery,
-#pulseaudio,
-#pulseaudio-slider,
-#network,
-#cpu,
+#usage,
+#net {
+    background-color: @background;
+    border-radius: 3px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    margin-left: 0.3em;
+}
+
 #memory,
-#custom-lock,
-#custom-volumeup,
-#custom-volumedown,
-#custom-power {
-  background-color: #101010;
-  padding: 0.5rem 1rem;
-  margin: 2px 0;
-}
-#network{
-  border-radius: 20px 0px 0px 20px;
-}
-
-#memory {
-  border-radius: 0px 0px 0px 0px;
-}
-
-#clock {
-  color: #8caaee;
-  border-radius: 5px;
-  margin-right: 1rem;
-}
-
-#battery {
-  color: #a6d189;
-}
-
-#battery.charging {
-  color: #a6d189;
-}
-
-#battery.warning:not(.charging) {
-  color: #e78284;
-}
-
-#backlight {
-  color: #e5c890;
-}
-
-#backlight,
-#battery {
-  border-radius: 0;
-}
-
-#bluetooth{
-  border-radius: 20px 0px 0px 20px;
-}
-#pulseaudio {
-  color: #ea999c;
-}
-
-#pulseaudio-slider slider {
-    min-height: 0px;
-    min-width: 0px;
-    opacity: 0;
-    background-image: none;
-    border: none;
-    box-shadow: none;
-}
-#pulseaudio-slider trough {
-    min-height: 10px;
-    min-width: 80px;
-    border-radius: 5px;
-    background-color: black;
-}
-#pulseaudio-slider highlight {
-    min-width: 10px;
-    border-radius: 5px;
-    background-color: green;
-}
-
-#custom-music {
-  color: #ca9ee6;
-  border-radius: 5px;
-}
-
-#custom-lock {
-  border-radius: 0px 20px 20px 0px;
-  margin-right: 5px;
-  color: #babbf1;
-}
-
-#custom-volumeup {
-  color: #babbf1;
-  padding: 10px 5px 10px 15px
-}
-
-#custom-volumeup.active {
-  color: #99d1db;
-}
-
-#custom-volumeup:hover {
-  color: #101010;
-  background-color: #85c1dc;
-}
-
-#custom-volumedown{
-  border-radius: 0px 20px 20px 0px;
-  margin-right: 5px;
-  color: #babbf1;
-  padding: 10px 5px 10px 15px
-}
-
-#custom-volumedown.active {
-  border-radius: 0px 20px 20px 0px;
-  margin-right: 5px;
-  color: #99d1db;
-}
-
-#custom-volumedown:hover {
-  border-radius: 0px 20px 20px 0px;
-  margin-right: 5px;
-  color: #101010;
-  background-color: #85c1dc;
-}
-
-#tray {
-  margin-right: 1rem;
-  margin-left: 1rem;
-  border-radius: 5px;
+#network {
+    margin-right: 0.8em;
 }

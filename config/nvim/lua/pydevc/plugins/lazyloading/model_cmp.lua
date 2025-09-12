@@ -1,6 +1,6 @@
 return {
-  "PyDevC/model-cmp.nvim",
-  -- dir="~/personal/project/model-cmp.nvim",
+  -- "PyDevC/model-cmp.nvim",
+  dir="~/personal/project/model-cmp.nvim",
   -- dir="~/personal/contrib/model-cmp.nvim",
   config = function()
     require("model_cmp").setup({
