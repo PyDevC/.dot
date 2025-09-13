@@ -26,7 +26,8 @@
         "sort-by-number": true
     },
     "clock": {
-        "format": "{%H:%M}"
+        "timezone": "Asia/Kolkata",
+        "format": "{:%H:%M}"
     },
     "memory": {
         "interval": 1,
