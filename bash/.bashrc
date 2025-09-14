@@ -26,4 +26,3 @@ fi
 . ~/.zsh_profile
 
 unset rc
-. "$HOME/.cargo/env"
