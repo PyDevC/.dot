@@ -4,6 +4,7 @@
 # and then select one, apply a command such as status, sync with remote, etc.
 
 load_all="0"
+fzf_flags="+m --height 50% --style full --input-label 'Destination' --preview"
 
 local_repo(){ # searches the .git dir in $1
     if [ -z $REPOS ]; then
@@ -16,14 +17,14 @@ repo_selection(){ # fzf selection from all_repo
     local selected
     local repo
     repo=`local_repo $1`
-    selected=$( printf "$repo" | fzf +m --height 50% --style full --input-label ' Destination ' --preview 'tree -C {}')
+    selected=$( printf "$repo" | fzf $fzf_flags 'tree -C {}')
     echo $selected 
 }
 
 git_fnc(){
     git_cmd_a=( ["branch_commit"]="branch -vva" )
     git_cmd=("status" "status -uno" "log" "branch -vva" "commit" "add" "config") # simple git commands
-    selected=$( printf '%s\n' "${git_cmd[@]}" | fzf +m --height 50% --style full --input-label ' Destination ' --preview 'tree -C {}')
+    selected=$( printf '%s\n' "${git_cmd[@]}" | fzf $fzf_flags 'tree -C {}')
     echo $selected
 }
 
