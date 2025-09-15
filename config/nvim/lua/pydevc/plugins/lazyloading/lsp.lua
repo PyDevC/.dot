@@ -2,20 +2,13 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "folke/neodev.nvim",
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
-
       { "j-hui/fidget.nvim", opts = {} },
-
-      -- Schema information
       "b0o/SchemaStore.nvim",
     },
     config = function()
-      require("neodev").setup {
-      }
-
       local capabilities = nil
       if pcall(require, "cmp_nvim_lsp") then
         capabilities = require("cmp_nvim_lsp").default_capabilities()
