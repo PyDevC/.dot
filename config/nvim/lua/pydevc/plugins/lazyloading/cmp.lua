@@ -1,6 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
+    event = 'VimEnter',
     lazy = false,
     priority = 100,
     dependencies = {

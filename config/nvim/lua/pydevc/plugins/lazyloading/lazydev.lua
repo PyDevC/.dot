@@ -1,6 +1,7 @@
 return {
   {
     "folke/lazydev.nvim",
+    event = 'VimEnter',
     ft = "lua", -- only load on lua files
     opts = {
       library = {
@@ -12,6 +13,7 @@ return {
   },
   { -- optional cmp completion source for require statements and module annotations
     "hrsh7th/nvim-cmp",
+    event = 'VimEnter',
     opts = function(_, opts)
       opts.sources = opts.sources or {}
       table.insert(opts.sources, {

@@ -1,5 +1,6 @@
 return {
   "williamboman/mason.nvim",
+  event = 'VimEnter',
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -22,6 +23,6 @@ return {
       automatic_installation = true,
     })
 
-    require("mason-tool-installer").setup({ensure_installed = ensure_installed})
+    require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
   end,
 }
