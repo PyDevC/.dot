@@ -22,7 +22,6 @@ require("lazy").setup({
   spec = {
     { import = "pydevc.plugins.install" },
     { import = "pydevc.plugins.lazyloading" },
-    { import = "pydevc.plugins.myplugin" }
   },
   checker = {
     enabled = true,
