@@ -1,2 +1,3 @@
 bin/kanata
 config/nvim/lua/pydevc/plugins/myplugin
+!config/nvim/lua/pydevc/plugins/myplugin/keep.lua
