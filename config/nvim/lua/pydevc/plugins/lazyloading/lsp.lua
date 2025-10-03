@@ -17,9 +17,6 @@ return {
 
       local lspconfig = require "lspconfig"
       local servers = {
-        lua_ls = true,
-        pyright = true,
-
         jsonls = {
           settings = {
             json = {
@@ -42,36 +39,40 @@ return {
         },
 
         clangd = {
-          -- TODO: Could include cmd, but not sure those were all relevant flags.
-          --    looks like something i would have added while i was floundering
           init_options = { clangdFileStatus = true },
           filetypes = { "c", "cpp" },
         },
+
+        lua_ls = {},
+        pyright = {},
       }
 
-      local servers_to_install = vim.tbl_filter(function(key)
-        local t = servers[key]
-        if type(t) == "table" then
-          return not t.manual_install
-        else
-          return t
-        end
-      end, vim.tbl_keys(servers))
+      require("mason-lspconfig").setup({
+        ensure_installed = vim.tbl_keys(servers),
+        handlers = {
+          function(server_name)
+            lspconfig[server_name].setup({
+              capabilities = capabilities,
+            })
+          end,
 
-      for name, config in pairs(servers) do
-        if config == true then
-          config = {}
-        end
-        config = vim.tbl_deep_extend("force", {}, {
-          capabilities = capabilities,
-        }, config)
-
-        lspconfig[name].setup(config)
-      end
-
-      local disable_semantic_tokens = {
-        lua = true,
-      }
+          ["jsonls"] = function()
+            lspconfig["jsonls"].setup(vim.tbl_deep_extend("force", {}, {
+              capabilities = capabilities,
+            }, servers.jsonls))
+          end,
+          ["yamlls"] = function()
+            lspconfig["yamlls"].setup(vim.tbl_deep_extend("force", {}, {
+              capabilities = capabilities,
+            }, servers.yamlls))
+          end,
+          ["clangd"] = function()
+            lspconfig["clangd"].setup(vim.tbl_deep_extend("force", {}, {
+              capabilities = capabilities,
+            }, servers.clangd))
+          end,
+        },
+      })
 
       vim.diagnostic.config({
         virtual_text = true,
