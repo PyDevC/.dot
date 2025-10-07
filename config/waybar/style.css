@@ -32,6 +32,7 @@
 #tray,
 #clock,
 #usage,
+#custom-lock,
 #net {
     background-color: @background;
     border-radius: 3px;

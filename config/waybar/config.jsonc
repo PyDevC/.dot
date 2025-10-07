@@ -8,7 +8,8 @@
     "modules-right": [
         "clock",
         "group/net",
-        "tray"
+        "tray",
+        "custom/lock"
     ],
     "group/net": {
         "orientation": "horizontal",
@@ -48,6 +49,11 @@
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{ifname}",
         "tooltip-format-disconnected": "Disconnected",
+    },
+    "custom/lock": {
+        "tooltip": false,
+        "on-click": "sh -c '(sleep 0.5s; hyprlock)' & disown",
+        "format": ""
     },
     "bluetooth": {
         "format": "\udb80\udcaf",
