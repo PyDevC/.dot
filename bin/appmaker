@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+help() {
+    printf "Usage: [-f][--flag] name\n"
+    printf "appmaker --type appimage --name Discord discord\n"
+    printf "\t--name [name]   \t The name of the applicaiton you want this will overwrite the folder name that you pass.\n"
+    printf "\t--type [type]   \t Type of applicaiton you are making, default is tar, possible values: tar, appimage, bin.\n"
+    printf "\t--icon [image.png]   \t Name of icon file inside the directory.\n"
+}
+
+name=""
+type="tar"
+appdir=""
+icon=""
+
+while [[ $# -gt 0 ]]; do
+    if [[ "${1:0:2}" == "--" ]]; then
+        if [[ "$1" == "--name" ]]; then
+            name=$2
+            shift
+        elif [[ "$1" == "--type" ]]; then
+            type=$2
+            shift
+        elif [[ "$1" == "--icon" ]]; then
+            icon=$2
+            shift
+        elif [[ "$1" == "--help" ]]; then
+            help
+            exit 0
+        fi
+    else
+       appdir=$1
+    fi
+
+    shift
+done
+
+if [[ -z "$appdir" ]]; then
+    help
+    exit 0
+elif [[ -z "$name" ]]; then
+    name=$appdir
+fi
+
+cat ~/.dot/.local/.template | sed s/\$name/$name/g | sed s/\$type/$type/g | sed s/\$appdir/$appdir/g | sed s/\$icon/$icon/g | sed s/\$user/$USER/g > ~/.local/share/applications/$name.desktop
