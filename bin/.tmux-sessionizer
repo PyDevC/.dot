@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-if [[ "$(pwd)" == $HOME/personal ]]; then
-    clear 
+if [[ -z "$(pwd | grep $HOME/personal)" ]]; then
+    clear
     return
 fi
 
 tmux new-window -dn scratch
 clear
+nvim .
