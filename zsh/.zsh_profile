@@ -38,7 +38,7 @@ bindkey -s ^f "tmux-sessionizer\n"
 bindkey -s ^a "tmux attach\n"
 
 # Alias
-alias cdd='cd $(fuzzy dir ~/personal)'
+alias cdd='cd $(fuzzy dir "$(pwd)")'
 alias cds='cd $(fuzzy dir)'
 alias cdf='cd $(fuzzy file)'
 alias gfzf='git_fzf'
