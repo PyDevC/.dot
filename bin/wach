@@ -20,5 +20,11 @@ done | rofi \
     if [ -n "$selected_wallpaper" ]; then
         # Set the wallpaper using swww
         swww img -t grow "$WALLPAPER_DIR/$selected_wallpaper"
+        if [[ ! -f ~/wallpaper_image_path.path ]]; then
+            touch ~/wallpaper_image_path.path
+        fi
+
+        echo "$WALLPAPER_DIR/$selected_wallpaper" > ~/wallpaper_image_path.path
     fi
 }
+
