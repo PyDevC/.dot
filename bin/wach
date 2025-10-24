@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+WALLPAPER_DIR="$HOME/personal/contrib/unixsoul-dk/Wallpapers-main"
+
+ls "$WALLPAPER_DIR" | while read -r wallpaper_file; do
+    if [ -f "$WALLPAPER_DIR/$wallpaper_file" ]; then
+        echo -en "$wallpaper_file\0icon\x1fthumbnail://$WALLPAPER_DIR/$wallpaper_file\n"
+    fi
+done | rofi \
+    -dmenu \
+    -show-icons \
+    -p "Wallpaper" \
+    -theme "$HOME/.config/rofi/launchers/colorful/wallpaper_launcher.rasi" \
+    -preview-cmd "gdk-pixbuf-thumbnailer -s {size} \"{input}\" \"{output}\"" | \
+{
+    # Read the selected filename from rofi
+    read -r selected_wallpaper
+
+    # Check if a selection was made (rofi returns an empty string on cancel)
+    if [ -n "$selected_wallpaper" ]; then
+        # Set the wallpaper using swww
+        swww img -t grow "$WALLPAPER_DIR/$selected_wallpaper"
+    fi
+}

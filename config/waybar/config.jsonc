@@ -14,6 +14,7 @@
     "group/net": {
         "orientation": "horizontal",
         "modules": [
+            "battery",
             "memory",
             "network",
             "bluetooth"
@@ -49,6 +50,7 @@
         "tooltip-format-wifi": "{essid} ({signalStrength}%)",
         "tooltip-format-ethernet": "{ifname}",
         "tooltip-format-disconnected": "Disconnected",
+        "on-click": "~/.dot/config/rofi/rofi-wifi-menu.sh"
     },
     "custom/lock": {
         "tooltip": false,
@@ -62,6 +64,10 @@
         "tooltip-format": "{controller_alias}\t{controller_address}",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}"
+    },
+    "battery": {
+        "format":"\udb80\udcaf",
+        "tooltip": false
     },
     "tray": {
         "icon-size": 16,

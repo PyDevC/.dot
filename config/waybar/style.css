@@ -33,6 +33,7 @@
 #clock,
 #usage,
 #custom-lock,
+#battery,
 #net {
     background-color: @background;
     border-radius: 3px;

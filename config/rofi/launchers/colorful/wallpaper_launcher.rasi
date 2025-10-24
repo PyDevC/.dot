@@ -1,0 +1,90 @@
+/*******************************************************
+ * ROFI Wallpaper Selector Config
+ *******************************************************/
+
+configuration {
+    show-icons:             true;
+    icon-theme:             "Qogir";
+    drun-display-format:    "";
+    disable-history:        false;
+    sidebar-mode:           true;
+    preview:                true;
+}
+
+/* Import color scheme */
+@import "./gruvbox-common.rasi"
+
+/*******************************************************
+ * Window and Main Box
+ *******************************************************/
+window {
+    background-color: @background;
+    border:             0;
+    margin:             10px;
+    padding:            0px;
+    width:              75%; 
+    height:             50%;
+    border-radius:      20px;
+}
+
+/*******************************************************
+ * Input Bar (Search Bar)
+ *******************************************************/
+
+inputbar {
+    spacing:            0.4em;
+    padding:            0.4em;
+    text-color:         @alternate-normal-foreground;
+    placeholder-color:  grey;
+}
+
+entry {
+    text-color:         @normal-foreground;
+}
+
+/*******************************************************
+ * Listview (Results Grid) - Icon Grid
+ *******************************************************/
+listview {
+    flow:               horizontal;
+    fixed-columns:      true;
+    columns:            5;
+    lines:              3;
+    spacing:            2px;
+    border:             2px 0px 0px;
+    border-color:       @separatorcolor;
+    padding:            1em 0 0 0;
+}
+
+/*******************************************************
+ * Element (Result Item) - Only contains the icon
+ *******************************************************/
+element {
+    border:             0;
+    padding:            0px;
+    orientation:        vertical; 
+    children:           [ element-icon ];
+}
+
+element-icon {
+    size:               15%;
+    background-color:   inherit;
+    margin:             0;
+    padding: 10px;
+}
+
+/* Color Definitions */
+element.selected.normal { 
+    background-color: @selected-normal-background;
+    text-color: @selected-normal-foreground; 
+    border-radius: 4px;
+    padding: 0;
+}
+
+scrollbar {
+    width:          4px;
+    border:         0;
+    handle-color:   @normal-foreground;
+    handle-width:   8px;
+    padding:        0;
+}
