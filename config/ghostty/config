@@ -3,6 +3,7 @@
 theme = rose-pine
 background = 141414
 background-blur = false
+background-opacity = 0.85
 confirm-close-surface=false
 
 shell-integration-features = no-cursor,no-sudo,no-title
