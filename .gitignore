@@ -1,2 +1,2 @@
-bin/kanata
+bin/kanata*
 config/nvim/lua/pydevc/plugins/lazyloading/model-cmp.lua
