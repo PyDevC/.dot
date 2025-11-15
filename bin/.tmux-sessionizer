@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ -z "$(pwd | grep $HOME/personal)" ]]; then
+if [[ -z "$(pwd | grep $HOME/personal)" ]] || [[ "$(pwd)" == "$HOME/personal" ]]; then
     clear
     return
 fi
