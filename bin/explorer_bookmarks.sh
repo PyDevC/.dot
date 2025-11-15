@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-b_dir=("Documents" "Downloads" "Pictures" "Videos" "personal")
+b_dir=("Documents" "Downloads" "Pictures" "Videos" "personal" "work")
 bookmark_path="$HOME/.config/gtk-3.0/bookmarks"
 
 echo "cleaning bookmarks..."
