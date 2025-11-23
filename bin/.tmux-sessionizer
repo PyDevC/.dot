@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 if [[ -z "$(pwd | grep $HOME/personal)" ]] || [[ "$(pwd)" == "$HOME/personal" ]]; then
-    clear
-    return
+    if [[ -z "$(pwd | grep $HOME/work)" ]] || [[ "$(pwd)" == "$HOME/work" ]]; then
+        clear
+        return
+    fi
 fi
 
 tmux new-window -dn scratch
