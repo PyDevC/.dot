@@ -23,6 +23,6 @@ if [ -d ~/.bashrc.d ]; then
     done
 fi
 
-. ~/.zsh_profile
+. ~/.bash_profile
 
 unset rc

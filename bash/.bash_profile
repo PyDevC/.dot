@@ -1,0 +1,47 @@
+VIM="nvim"
+
+export XDG_CONFIG_HOME=$HOME/.config
+
+export GIT_EDITOR=$VIM
+export DOTFILES=$HOME/.dot
+export EDITOR=$VIM
+
+
+addToPath() { 
+    # adds at the back of the path thus getting lower priority if something having same name is in front of the path
+    if [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$PATH:$1
+    fi
+}
+
+addToPathFront() { 
+    # useful when you want some thing like $HOME/bin to have more priority than $HOME/.dot/bin then which gets first in path get higher priority
+    if [[ ! -z "$2" ]] || [[ "$PATH" != *"$1"* ]]; then
+        export PATH=$1:$PATH
+    fi
+}
+
+validate() { 
+    # add more validations
+    if [[ "$1" == "yaml" ]]; then
+        python -c 'import yaml,sys;yaml.safe_load(sys.stdin)' < $2
+    fi
+}
+
+addToPath $HOME/.dot/bin
+addToPathFront $HOME/build_desktop/
+addToPathFront $HOME/.cargo/bin
+addToPathFront $HOME/bin
+addToPath $HOME/personal/softwares/zen/
+
+bind -x '"\C-f": "tmux-sessionizer"'
+bind -x '"\C-a": "tmux attach"'
+
+# Alias
+alias cdd='cd $(fuzzy dir "$(pwd)")'
+alias cds='cd $(fuzzy dir)'
+alias cdf='cd $(fuzzy file)'
+alias gfzf='git_fzf'
+
+
+alias penv='. ~/personal/env/python/$(find ~/personal/env/python -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | fzf)/bin/activate'
