@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-~/bin/launch_podman_app.sh llvmworkstation ghostty
+~/bin/launch_podman_app.sh llvmwork ghostty

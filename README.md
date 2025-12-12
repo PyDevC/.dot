@@ -6,6 +6,7 @@ starting from this commit [e98bea8]
 > For actual productivity you should keep animations in hyprland config as `enable = no`
 
 ## Key FEATURES
+- [ ] Make a Widget bar using quickshell
 - [ ] Move it to quickshell, make it the greatest rice ever
 - [x] Eye pleasing
 - [x] Ease of use

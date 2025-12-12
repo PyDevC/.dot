@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-~/bin/launch_podman_app.sh genearlwork gimp 
+~/bin/launch_podman_app.sh general gimp 
