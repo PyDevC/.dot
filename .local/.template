@@ -1,9 +1,0 @@
-[Desktop Entry]
-Name=$name
-Exec=/home/$user/LocalSoftwares/$type/$appdir/$appdir
-Path=/home/$user/LocalSoftwares/$type/$appdir
-Icon=/home/$user/LocalSoftwares/$type/$appdir/$icon
-Type=Application
-StartupNotify=true
-Terminal=false
-Categories=GTK;GNOME;Utility;Qt

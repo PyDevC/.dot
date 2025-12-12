@@ -48,4 +48,5 @@ fi
 
 sync-all ~/.dot/config $XDG_CONFIG_HOME
 sync-all ~/.dot/bin $HOME/bin
+sync-all ~/.dot/.local $HOME/.local/share/applications
 . ~/.dot/bin/explorer_bookmarks.sh

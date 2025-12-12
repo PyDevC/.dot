@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=FireFox
+Exec=/home/pdev/.dot/bin/firefox.sh
+Type=Application
+StartupNotify=true
+Terminal=talse

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Gimp
+Exec=/home/pdev/.dot/bin/gimp.sh
+Type=Application
+StartupNotify=true
+Terminal=talse

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=LLVM Cont
+Exec=/home/pdev/.dot/bin/llvmcont.sh
+Type=Application
+StartupNotify=true
+Terminal=talse

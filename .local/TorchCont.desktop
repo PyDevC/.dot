@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=PyTorch Cont
+Exec=/home/pdev/.dot/bin/torchcont.sh
+Type=Application
+StartupNotify=true
+Terminal=talse
+
