@@ -6,6 +6,9 @@ export GIT_EDITOR=$VIM
 export DOTFILES=$HOME/.dot
 export EDITOR=$VIM
 
+# Disable In Style:
+export MINIKUBE_IN_STYLE=false
+
 
 addToPath() { 
     # adds at the back of the path thus getting lower priority if something having same name is in front of the path
