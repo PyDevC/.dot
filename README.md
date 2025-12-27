@@ -18,3 +18,8 @@ starting from this commit [e98bea8]
 - [ ] Stress Handling
 
 The system is going to be more lively now
+
+What my system looks like?
+![System Looks](./assets/System_look1.png)
+![System Looks](./assets/System_look2.png)
+![System Looks](./assets/System_look3.png)
