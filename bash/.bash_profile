@@ -38,7 +38,7 @@ addToPathFront $HOME/bin
 addToPath $HOME/personal/softwares/zen/
 
 bind -x '"\C-f": "tmux-sessionizer"'
-bind -x '"\C-a": "tmux attach"'
+bind -x '"\C-b": "tmux attach"'
 
 # Alias
 alias cdd='cd $(fuzzy dir "$(pwd)")'
