@@ -6,20 +6,23 @@ starting from this commit [e98bea8]
 > For actual productivity you should keep animations in hyprland config as `enable = no`
 
 ## Key FEATURES
-- [ ] Make a Widget bar using quickshell
-- [ ] Move it to quickshell, make it the greatest rice ever
 - [x] Eye pleasing
 - [x] Ease of use
 - [x] Less Search Fatigue
 - [x] Faster loading
 - [x] Open Source softwares And Free
-- [ ] DOCS
-- [ ] Software compatiblity
-- [ ] Stress Handling
 
-The system is going to be more lively now
+## What my system looks like?
 
-What my system looks like?
 ![System Looks](./assets/System_look1.png)
 ![System Looks](./assets/System_look2.png)
 ![System Looks](./assets/System_look3.png)
+
+## NEW FEATURES TODO
+
+- [ ] Add Docs using sphinx documentation builder
+- [ ] Software compatiblity
+- [ ] Stress Handling
+- [ ] Add only default keybindings for the things that you might use in a server
+- [ ] Make a Widget bar using quickshell
+- [ ] Move it to quickshell, make it the greatest rice ever
