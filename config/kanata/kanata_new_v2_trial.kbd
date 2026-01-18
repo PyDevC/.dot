@@ -1,0 +1,98 @@
+;; defsrc is still necessary
+(defcfg
+  linux-dev (
+    /dev/input/by-id/usb-SIGMACHIP_USB_Keyboard-event-if01
+    /dev/input/by-id/usb-SIGMACHIP_USB_Keyboard-event-kbd
+  )
+  linux-unicode-u-code u
+  linux-unicode-termination space
+  process-unmapped-keys yes
+)
+
+(defsrc
+  q w e r t y u i o p 
+  caps lsft rsft a s d f g h j k l ;
+  z x c v b n m , .
+)
+
+(defvar
+  tap-time 200
+  hold-time 175
+)
+
+(defalias
+  ;; Layer Switching & Toggles
+  numlay (layer-switch num_mod)
+  norlay (layer-switch home_row)
+  arrowlay (layer-switch arrow_mod)
+  numtog (layer-toggle num_mod)
+
+  ;; The Custom Shift: Symbols by default, Numbers on this layer
+  shf (layer-while-held shifted_num)
+
+  ;; Home Row Mods (Normal Layer)
+  a (tap-hold $tap-time $hold-time a lmet)
+  s (tap-hold $tap-time $hold-time s lalt)
+  d (tap-hold $tap-time $hold-time d lsft)
+  f (tap-hold $tap-time $hold-time f lctl)
+  j (tap-hold $tap-time $hold-time j rctl)
+  k (tap-hold $tap-time $hold-time k rsft)
+  l (tap-hold $tap-time $hold-time l ralt)
+  ; (tap-hold $tap-time $hold-time ; @numtog)
+
+  ;; configure the switch buttons these are same for every layer
+  nlay (tap-hold 10 20 esc @numlay)
+  olay (tap-hold 1 20 _ @norlay)
+  alay (tap-hold 1 20 _ @arrowlay)
+
+
+  ;; Symbols for the Top Row (Standard names)
+  plus  S-=
+  lbrc  [
+  lcly  S-[
+  lprn  S-9
+  amp   S-7
+  eql   =
+  rprn  S-0
+  rcly  S-]
+  rbrc  ]
+  ast   S-8
+
+;; num row mods
+  na (tap-hold $tap-time $hold-time @plus lmet)
+  ns (tap-hold $tap-time $hold-time @lbrc lalt)
+  nd (tap-hold $tap-time $hold-time @lcly lsft)
+  nf (tap-hold $tap-time $hold-time @lprn lctl)
+  nj (tap-hold $tap-time $hold-time @rprn rctl)
+  nk (tap-hold $tap-time $hold-time @rcly rsft)
+  nl (tap-hold $tap-time $hold-time @rbrc  ralt)
+  nn (tap-hold $tap-time $hold-time 0 @numtog)
+
+  ;; Top Row Punctuation (based on your snippet)
+  excl  S-1
+  bar   S-\
+)
+
+(deflayer home_row
+  q w e r t y u i o p 
+  @nlay @shf @shf @a @s @d @f _ _ @j @k @l @semitog
+  z x c v b n m , .
+)
+
+(deflayer num_mod
+  @plus @lbrc @lcly @lprn @amp @eql @rprn @rcly @rbrc @ast
+  @nlay @shf @shf @a @s @d @f _ _ @j @k @l @semitog
+  z x c v b n m , .
+)
+
+(deflayer shifted_num
+  _ _ _ _ _ _ _ _ _ _
+  _ _ _ 1 2 3 4 5 6 7 8 9 0
+  _ _ _ _ _ _ _ _ _
+)
+
+(deflayer arrow_mod
+  q w e r t y u up o p 
+  @nlay _ _ @a @s @d @f _ _ left down rght @semitog
+  z x c v b n m , .
+)
