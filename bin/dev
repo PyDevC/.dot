@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+## A special thanks to github.com/hellcsvishal
+
+set -e
+
+ACTION="$1" # Action to perform
+NAME="$2" # Name of the container
+
+GITHUB_DIR="$HOME/personal/github"
+CONTRIB_DIR="$HOME/work/contrib"
+PROJECT_DIR="$HOME/work/project"
+SSH_DIR="$HOME/.ssh"
+CACHE_DIR="$HOME/.cache/container_cache"
+CONFIG_DIR="$HOME/.config"
+PIP_CACHE_DIR="$CACHE_DIR/$NAME/pip" # Each container must have it's own cache dir
+
+IMAGE_PREFIX="dev"
+CONTAINER="$IMAGE_PREFIX-$NAME"
+IMAGE="$IMAGE_PREFIX-$NAME:latest"
+
+COMMON_ARGS=(
+  --userns=keep-id
+  --security-opt=label=disable
+  --device=/dev/snd 
+  --device=/dev/kfd 
+  --device=/dev/dri
+  -v "$GITHUB_DIR:/home/pydevc/personal/github"
+  -v "$CONTRIB_DIR:/home/pydevc/work/contrib"
+  -v "$PROJECT_DIR:/home/pydevc/work/project"
+  -v "$SSH_DIR:/home/pydevc/.ssh"
+  -v "$CONFIG_DIR:/home/pydevc/.config"
+  -v "$PIP_CACHE_DIR:/home/pydevc/.cache/pip"
+)
+
+usage() {
+  echo "Usage:"
+  echo "  dev up <devenv|pytorch|llvm>"
+  echo "  dev shell <devenv|pytorch|llvm>"
+  echo "  dev stop <devenv|pytorch|llvm>"
+  exit 1
+}
+
+[ -z "$NAME" ] && usage
+[ -z "$ACTION" ] && usage
+
+case "$ACTION" in
+  up)
+    podman container exists "$CONTAINER" && {
+      echo "[+] Container already exists: $CONTAINER"
+      exit 0
+    }
+
+    echo "[+] Starting container $CONTAINER"
+    podman run -d \
+      --name "$CONTAINER" \
+      "${COMMON_ARGS[@]}" \
+      "$IMAGE" sleep infinity
+    ;;
+
+  shell)
+    podman exec -it "$CONTAINER" bash
+    ;;
+
+  stop)
+    podman stop "$CONTAINER"
+    ;;
+
+  *)
+    usage
+    ;;
+esac
