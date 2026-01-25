@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=ExcaliDraw
+Exec=/home/pdev/.dot/bin/excalidraw.sh
+Type=Application
+StartupNotify=true
+Terminal=talse
