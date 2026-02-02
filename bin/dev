@@ -25,12 +25,11 @@ COMMON_ARGS=(
   --device=/dev/snd 
   --device=/dev/kfd 
   --device=/dev/dri
-  -v "$GITHUB_DIR:/home/pydevc/personal/github"
-  -v "$CONTRIB_DIR:/home/pydevc/work/contrib"
-  -v "$PROJECT_DIR:/home/pydevc/work/project"
-  -v "$SSH_DIR:/home/pydevc/.ssh"
-  -v "$CONFIG_DIR:/home/pydevc/.config"
-  -v "$PIP_CACHE_DIR:/home/pydevc/.cache/pip"
+  -v "$GITHUB_DIR:/home/pydevc/personal/github:z"
+  -v "$CONTRIB_DIR:/home/pydevc/work/contrib:z"
+  -v "$PROJECT_DIR:/home/pydevc/work/project:z"
+  -v "$SSH_DIR:/home/pydevc/.ssh:Z"
+  -v "$CONFIG_DIR:/home/pydevc/.config:z"
 )
 
 usage() {
@@ -55,7 +54,7 @@ case "$ACTION" in
     podman run -d \
       --name "$CONTAINER" \
       "${COMMON_ARGS[@]}" \
-      "$IMAGE" sleep infinity
+      "localhost/$IMAGE" sleep infinity
     ;;
 
   shell)
