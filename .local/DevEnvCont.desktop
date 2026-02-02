@@ -3,4 +3,4 @@ Name=DevEnv Cont
 Exec=/home/pdev/.dot/bin/devenvcont.sh
 Type=Application
 StartupNotify=true
-Terminal=talse
+Terminal=false
