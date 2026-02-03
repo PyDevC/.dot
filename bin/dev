@@ -1,34 +1,34 @@
 #!/usr/bin/env bash
+set -euo pipefail # Added 'u' to error on unset vars and 'o pipefail' for better error catching
 
-## A special thanks to github.com/hellcsvishal
+ACTION="${1:-}" # Action to perform
+NAME="${2:-}"   # Name of the container
 
-set -e
+echo $ACTION
+echo $NAME
 
-ACTION="$1" # Action to perform
-NAME="$2" # Name of the container
-
-GITHUB_DIR="$HOME/personal/github"
-CONTRIB_DIR="$HOME/work/contrib"
-PROJECT_DIR="$HOME/work/project"
-SSH_DIR="$HOME/.ssh"
-CACHE_DIR="$HOME/.cache/container_cache"
+BASE_PERSONAL_DIR="$HOME/personal" # Do not mount this directory
+BASE_WORK_DIR="$HOME/work" # Do not mount this directory
+GITHUB_DIR="$BASE_PERSONAL_DIR/github"
+CONTRIB_DIR="$BASE_WORK_DIR/contrib"
+PROJECT_DIR="$BASE_WORK_DIR/project"
 CONFIG_DIR="$HOME/.config"
-PIP_CACHE_DIR="$CACHE_DIR/$NAME/pip" # Each container must have it's own cache dir
 
 IMAGE_PREFIX="dev"
 CONTAINER="$IMAGE_PREFIX-$NAME"
-IMAGE="$IMAGE_PREFIX-$NAME:latest"
+IMAGE="localhost/$IMAGE_PREFIX-$NAME:latest"
 
 COMMON_ARGS=(
-  --userns=keep-id
+  --userns=keep-id:uid=1000,gid=1000
   --security-opt=label=disable
   --device=/dev/snd 
   --device=/dev/kfd 
   --device=/dev/dri
+  --shm-size=8g
+  --memory=30g
   -v "$GITHUB_DIR:/home/pydevc/personal/github:z"
   -v "$CONTRIB_DIR:/home/pydevc/work/contrib:z"
   -v "$PROJECT_DIR:/home/pydevc/work/project:z"
-  -v "$SSH_DIR:/home/pydevc/.ssh:Z"
   -v "$CONFIG_DIR:/home/pydevc/.config:z"
 )
 
@@ -40,13 +40,14 @@ usage() {
   exit 1
 }
 
-[ -z "$NAME" ] && usage
 [ -z "$ACTION" ] && usage
 
 case "$ACTION" in
   up)
     podman container exists "$CONTAINER" && {
       echo "[+] Container already exists: $CONTAINER"
+      podman start $CONTAINER
+      echo "[+] Container Started: $CONTAINER"
       exit 0
     }
 
@@ -54,18 +55,25 @@ case "$ACTION" in
     podman run -d \
       --name "$CONTAINER" \
       "${COMMON_ARGS[@]}" \
-      "localhost/$IMAGE" sleep infinity
+      "$IMAGE" sleep infinity
     ;;
 
   shell)
-    podman exec -it "$CONTAINER" bash
+    if [[ "$(podman inspect -f '{{.State.Running}}' "$CONTAINER" 2>/dev/null)" == "true" ]]; then
+        podman exec -it -u pydevc "$CONTAINER" bash
+    else
+        echo "[!] Container $CONTAINER is not running. Try 'up' first."
+    fi
     ;;
 
   stop)
     podman stop "$CONTAINER"
     ;;
 
-  *)
-    usage
+    *)
+    # The "Wrapper" Logic:
+    # If the command isn't up/shell/stop, pass everything directly to podman.
+    echo "[→] Passing to podman: podman $@"
+    exec podman "$@"
     ;;
 esac
