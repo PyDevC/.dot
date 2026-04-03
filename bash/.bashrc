@@ -24,5 +24,6 @@ if [ -d ~/.bashrc.d ]; then
 fi
 
 . ~/.bash_profile
+. ~/.bash_color
 
 unset rc

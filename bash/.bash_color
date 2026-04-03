@@ -1,0 +1,23 @@
+# Function to get the exit status color
+prompt_status() {
+    local EXIT="$?"
+    if [ $EXIT -eq 0 ]; then
+        echo -e "\033[0;32m" # Green
+    else
+        echo -e "\033[0;31m" # Red
+    fi
+}
+
+# Define the Bash Prompt
+# \w = current working directory
+# \[...\] tells Bash these are non-printing characters (prevents wrapping bugs)
+set_prompt() {
+    local ARROW_COLOR=$(prompt_status)
+    local CYAN="\[\033[0;36m\]"
+    local RESET="\[\033[0m\]"
+    
+    PS1="${ARROW_COLOR}➜  ${CYAN}\w ${RESET}"
+}
+
+# Run the function before every prompt display
+PROMPT_COMMAND=set_prompt
