@@ -8,6 +8,7 @@ export EDITOR=$VIM
 
 # Disable In Style:
 export MINIKUBE_IN_STYLE=false
+export PATH=$HOME/.opencode/bin:$PATH
 
 
 addToPath() { 
