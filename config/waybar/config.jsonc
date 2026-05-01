@@ -40,6 +40,7 @@
         "format-ethernet": "\udb83\udc9d ",
         "format-wifi": "{icon} ",
         "format-disconnected": "\udb83\udc9c ",
+        "format-disabled": "\udb83\ude2d ",
         "format-icons": [
             "\udb82\udd2f",
             "\udb82\udd1f",
