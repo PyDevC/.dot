@@ -13,6 +13,7 @@ GITHUB_DIR="$BASE_PERSONAL_DIR/github"
 CONTRIB_DIR="$BASE_WORK_DIR/contrib"
 PROJECT_DIR="$BASE_WORK_DIR/project"
 CONFIG_DIR="$HOME/.config"
+GIT_CONFIG="$HOME/.gitconfig"
 
 IMAGE_PREFIX="dev"
 CONTAINER="$IMAGE_PREFIX-$NAME"
@@ -21,6 +22,8 @@ IMAGE="localhost/$IMAGE_PREFIX-$NAME:latest"
 COMMON_ARGS=(
   --userns=keep-id:uid=1000,gid=1000
   --security-opt=label=disable
+  -v /tmp/.X11-unix:/tmp/.X11-unix
+  -e DISPLAY=$DISPLAY
   --device=/dev/snd 
   --device=/dev/kfd 
   --device=/dev/dri
@@ -30,6 +33,7 @@ COMMON_ARGS=(
   -v "$CONTRIB_DIR:/home/pydevc/work/contrib:z"
   -v "$PROJECT_DIR:/home/pydevc/work/project:z"
   -v "$CONFIG_DIR:/home/pydevc/.config:z"
+  -v "$GIT_CONFIG:/home/pydevc/.gitconfig:z"
 )
 
 usage() {
@@ -41,6 +45,10 @@ usage() {
 }
 
 [ -z "$ACTION" ] && usage
+
+if [[ "$NAME" == "devenv" ]]; then
+    COMMON_ARGS+=(-p 9000:9000)
+fi
 
 case "$ACTION" in
   up)
@@ -59,10 +67,15 @@ case "$ACTION" in
     ;;
 
   shell)
-    if [[ "$(podman inspect -f '{{.State.Running}}' "$CONTAINER" 2>/dev/null)" == "true" ]]; then
-        podman exec -it -u pydevc "$CONTAINER" bash
+      STATE="$(podman inspect -f '{{.State.Running}}' "$CONTAINER" 2>/dev/null)"
+    if [[ "$STATE" == "true" ]]; then
+        podman exec -it --detach-keys="" -u pydevc "$CONTAINER" bash
+    elif [[ "$STATE" == "false" ]]; then
+        echo "Container is turned off! Turning it on..."
+        podman start $CONTAINER
+        podman exec -it --detach-keys="" -u pydevc "$CONTAINER" bash
     else
-        echo "[!] Container $CONTAINER is not running. Try 'up' first."
+        echo "[!] Container does not exists. Use dev up dev-$CONTAINER to setup your container first."
     fi
     ;;
 
@@ -77,3 +90,4 @@ case "$ACTION" in
     exec podman "$@"
     ;;
 esac
+
