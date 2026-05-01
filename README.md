@@ -5,6 +5,11 @@ starting from this commit [e98bea8]
 
 > For actual productivity you should keep animations in hyprland config as `enable = no`
 
+## Installation
+```bash
+git clone --recursive https://github.com/PyDevC/.dot
+```
+
 ## Key FEATURES
 - [x] Eye pleasing
 - [x] Ease of use
@@ -25,4 +30,5 @@ starting from this commit [e98bea8]
 - [ ] Stress Handling
 - [ ] Add only default keybindings for the things that you might use in a server
 - [ ] Make a Widget bar using quickshell
+- [ ] Make a SDDM login screen.
 - [ ] Move it to quickshell, make it the greatest rice ever
