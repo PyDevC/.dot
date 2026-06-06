@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# Popup window for anything you want to launch on current workspace
-
-ghostty -e nvim ~/personal/documents/projects/
