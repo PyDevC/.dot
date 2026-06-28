@@ -13,6 +13,7 @@ GITHUB_DIR="$BASE_PERSONAL_DIR/github"
 CONTRIB_DIR="$BASE_WORK_DIR/contrib"
 PROJECT_DIR="$BASE_WORK_DIR/project"
 CONFIG_DIR="$HOME/.config"
+TRENCH_DIR="$HOME/trench"
 GIT_CONFIG="$HOME/.gitconfig"
 
 IMAGE_PREFIX="dev"
@@ -32,6 +33,7 @@ COMMON_ARGS=(
   -v "$GITHUB_DIR:/home/pydevc/personal/github:z"
   -v "$CONTRIB_DIR:/home/pydevc/work/contrib:z"
   -v "$PROJECT_DIR:/home/pydevc/work/project:z"
+  -v "$TRENCH_DIR:/home/pydevc/trench:z"
   -v "$CONFIG_DIR:/home/pydevc/.config:z"
   -v "$GIT_CONFIG:/home/pydevc/.gitconfig:z"
 )
@@ -84,8 +86,6 @@ case "$ACTION" in
     ;;
 
     *)
-    # The "Wrapper" Logic:
-    # If the command isn't up/shell/stop, pass everything directly to podman.
     echo "[→] Passing to podman: podman $@"
     exec podman "$@"
     ;;
