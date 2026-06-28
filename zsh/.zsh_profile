@@ -32,7 +32,6 @@ validate() {
     fi
 }
 
-addToPath $HOME/.dot/bin
 addToPathFront $HOME/build_desktop/
 addToPathFront $HOME/.cargo/bin
 addToPathFront $HOME/bin

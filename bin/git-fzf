@@ -1,30 +1,31 @@
 #!/usr/bin/env bash
 
-# use fzf for selecting the repos from the desktop
-# and then select one, apply a command such as status, sync with remote, etc.
-
 load_all="0"
-fzf_flags="+m --height 50% --style full --input-label 'Destination' --preview"
+Style="+m --height 50% --style full --input-label 'Destination' --preview"
+REPOS=()
 
-local_repo(){ # searches the .git dir in $1
-    if [ -z $REPOS ]; then
-        export REPOS="$(dirname $(find $1 -name ".git" -type d))"
-    fi
-    echo $REPOS | tr ' ' '\n'
+select_repo() {
+    while [ $# -gt 0 ]; do
+        REPOS+="$(dirname $(find $1 -name ".git" -type d))"
+        shift 1
+    done
 }
 
-repo_selection(){ # fzf selection from all_repo
+repo_selection(){
     local selected
-    local repo
-    repo=`local_repo $1`
-    selected=$( printf "$repo" | fzf $fzf_flags 'tree -C {}')
+    selected=$( printf "$REPOS" | fzf $Style 'tree -C {}')
+
+    if [ -z $selected ]; then
+        return
+    fi
+
     echo $selected 
 }
 
 git_fnc(){
     git_cmd_a=( ["branch_commit"]="branch -vva" )
     git_cmd=("status" "status -uno" "log" "branch -vva" "commit" "add" "config") # simple git commands
-    selected=$( printf '%s\n' "${git_cmd[@]}" | fzf $fzf_flags 'tree -C {}')
+    selected=$( printf '%s\n' "${git_cmd[@]}" | fzf $Style 'tree -C {}')
     echo $selected
 }
 
@@ -38,14 +39,16 @@ done
 
 
 if [[ $load_all == "1" ]];then
-    for repo in $(local_repo $HOME); do
-        echo $repo
-        git -C $repo --no-pager branch -vva 
+    for repo in $(select_repo $HOME/personal $HOME/work); do
+        echo $REPOS
+        git -C $REPOS --no-pager branch -vva 
     done
     exit 0
 fi
 
-repo=`repo_selection $HOME`
+select_repo $HOME/work $HOME/personal/github
+
+repo="$(repo_selection)"
 cmd="cmd"
 
 while [ ! -z "$cmd" ]; do
