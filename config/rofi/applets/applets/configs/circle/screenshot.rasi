@@ -1,128 +1,118 @@
-/*
- *
- * Author  : Aditya Shakya
- * Mail    : adi1090x@gmail.com
- * Github  : @adi1090x
- * Twitter : @adi1090x
- *
- */
-
 configuration {
-    show-icons:                     false;
-	font:                      		"Comfortaa 12";
-    disable-history:                false;
-	sidebar-mode: 					false;
+    show-icons:      false;
+    font:            "JetBrains Mono Nerd Font 12";
+    disable-history: false;
+    sidebar-mode:    false;
 }
 
 @import "../../../styles/colors.rasi"
 
 * {
-    background-color:               @background;
-    text-color:                     @foreground;
+    background-color: @background;
+    text-color:       @foreground;
 }
 
 window {
-    transparency:                   "real";
-    border-radius:                  40px;
-    location:                       southeast;
-	width:							250px;
-    x-offset:                       -15px;
-    y-offset:                       -45px;
+    transparency:   "real";
+    background-blur: true;
+    border:         1px;
+    border-color:   rgba(30, 32, 48, 0.5);
+    border-radius:  24px;
+    location:       southeast;
+    width:          240px;
+    x-offset:       -18px;
+    y-offset:       -50px;
 }
 
 prompt {
-    enabled: 						true;
-    padding:                        10px;
-	background-color: 				@background-light;
-	text-color: 					@accent;
-    border:                  		0px 0px 2px 0px;
-    border-radius:                  25px;
-    border-color:                  	@accent;
+    enabled:         true;
+    padding:         8px 14px;
+    background-color: @background-light;
+    text-color:      @accent;
+    border:          0;
+    border-radius:   14px;
 }
 
 textbox-prompt-colon {
-	expand: 						false;
-	str: 							" Screenshot ";
-	background-color: 				@accent;
-	text-color: 					@background;
-    padding:                        12px 10px 0px 10px;
-    border-radius:                  25px;
+    expand:           false;
+    str:              " Screenshot ";
+    background-color: @accent;
+    text-color:       rgba(15, 17, 23, 1);
+    padding:          8px 14px 0 14px;
+    border-radius:    14px;
 }
 
 inputbar {
-	children: 						[ textbox-prompt-colon, prompt ];
-    spacing:                        12px;
-    background-color:               @background;
-    text-color:                     @foreground;
-    expand:                         false;
-    border:                  		0px;
-    border-radius:                  0px;
-    border-color:                  	@accent;
-    margin:                         0px 0px 0px 0px;
-    padding:                        0px;
-    position:                       center;
+    children:         [ textbox-prompt-colon, prompt ];
+    spacing:          10px;
+    background-color: transparent;
+    text-color:       @foreground;
+    expand:           false;
+    border:           0;
+    margin:           0;
+    padding:          0;
+    position:         center;
 }
 
 listview {
-    columns:						3;
-    lines:							1;
-    spacing:                        12px;
-    cycle:                          true;
-    dynamic:                        true;
-    layout:                         vertical;
+    columns:  3;
+    lines:    1;
+    spacing:  10px;
+    cycle:    true;
+    dynamic:  true;
+    layout:   vertical;
 }
 
 mainbox {
-    background-color:               @background;
-    children:                       [ inputbar, listview ];
-    spacing:                        12px;
-    margin:                         12px;
+    background-color: transparent;
+    children:         [ inputbar, listview ];
+    spacing:          14px;
+    margin:           14px;
 }
 
 element {
-    background-color:               @background-light;
-    text-color:                     @foreground;
-    orientation:                    vertical;
-    border-radius:                  100%;
+    background-color: @background-light;
+    text-color:       @foreground;
+    orientation:      vertical;
+    border-radius:    100%;
 }
 
 element-text {
-    background-color: 				inherit;
-    text-color:       				inherit;
-	font:							"feather 20";
-    expand:                         true;
-    horizontal-align:               0.5;
-    vertical-align:                 0.5;
-    margin:                         19px 10px 19px 10px;
+    background-color:  inherit;
+    text-color:        inherit;
+    font:              "feather 20";
+    expand:            true;
+    horizontal-align:  0.5;
+    vertical-align:    0.5;
+    margin:            16px 8px;
 }
 
 element normal.urgent,
 element alternate.urgent {
-    background-color:               @off;
-    text-color:                     @background;
-    border-radius:                  100%;
+    background-color: @off;
+    text-color:       rgba(15, 17, 23, 1);
+    border-radius:    100%;
 }
 
 element normal.active,
 element alternate.active {
-    background-color:               @on;
-    text-color:                     @background;
+    background-color: @on;
+    text-color:       rgba(15, 17, 23, 1);
 }
 
 element selected {
-    background-color:               @background-light;
-    text-color:                     @accent;
-    border:                  		0px 0px 2px 0px;
-    border-radius:                  100%;
-    border-color:                  	@accent;
+    background-color: @accent;
+    text-color:       rgba(15, 17, 23, 1);
+    border:           0;
+    border-radius:    100%;
 }
 
 element selected.urgent {
-    background-color:               @on;
-    text-color:                     @background;
+    background-color: @on;
+    text-color:       rgba(15, 17, 23, 1);
 }
 
 element selected.active {
-    background-color:               @off;
-    color:                          @background;
+    background-color: @off;
+    color:            rgba(15, 17, 23, 1);
 }

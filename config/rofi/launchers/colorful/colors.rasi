@@ -1,9 +1,7 @@
-/* colors */
-
 * {
   al:  #00000000;
-  bg:  #151515ff;
-  se:  #202020ff;
-  fg:  #FFFFFFff;
-  ac:  #61AFEFff;
+  bg:  #1a1d21ff;
+  se:  #22262bff;
+  fg:  #f0efebff;
+  ac:  #d4ccb4ff;
 }
