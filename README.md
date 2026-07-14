@@ -22,10 +22,11 @@ git clone --recursive https://github.com/PyDevC/.dot
 ![System Looks](./assets/System_look1.png)
 ![System Looks](./assets/System_look2.png)
 ![System Looks](./assets/System_look3.png)
+![System Looks](./assets/System_look4.png)
 
 ## NEW FEATURES TODO
 
-- [ ] Add Docs using sphinx documentation builder
+- [ ] Add MarkDown Docs using sphinx documentation builder
 - [ ] Software compatiblity
 - [ ] Stress Handling
 - [ ] Add only default keybindings for the things that you might use in a server
