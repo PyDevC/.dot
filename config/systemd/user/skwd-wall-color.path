@@ -1,8 +1,0 @@
-[Unit]
-Description=Watch skwd-wall colors for waybar
-
-[Path]
-PathModified=%h/.cache/skwd-wall/colors.json
-
-[Install]
-WantedBy=default.target

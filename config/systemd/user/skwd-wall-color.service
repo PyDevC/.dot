@@ -1,6 +1,0 @@
-[Unit]
-Description=Generate waybar colors from skwd-wall
-
-[Service]
-Type=oneshot
-ExecStart=%h/.dot/config/waybar/scripts/generate-colors.sh
