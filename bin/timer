@@ -1,0 +1,88 @@
+#!/bin/bash
+
+MESSAGE="Time's up!"
+TIME_STRING=""
+USE_NOTIFY=false
+TOTAL_SECONDS=0
+
+# Parse arguments
+while [[ $# -gt 0 ]]; do
+    case "$1" in
+        -m)
+            MESSAGE="$2"
+            shift 2
+            ;;
+        -t)
+            while [[ -n "$2" && "$2" != -* ]]; do
+                TIME_STRING="$TIME_STRING $2"
+                shift
+            done
+            shift
+            ;;
+        --notify)
+            USE_NOTIFY=true
+            shift
+            ;;
+        *)
+            echo "Unknown option: $1"
+            exit 1
+            ;;
+    esac
+done
+
+if [ -z "$TIME_STRING" ]; then
+    echo "Usage: $0 -t <time> [-m \"message\"] [--notify]"
+    echo "Example: $0 -t 1h 2m 30s -m \"Cake is ready\" --notify"
+    exit 1
+fi
+
+for part in $TIME_STRING; do
+    if [[ $part =~ ([0-9]+)[hH] ]]; then
+        TOTAL_SECONDS=$((TOTAL_SECONDS + ${BASH_REMATCH[1]} * 3600))
+    elif [[ $part =~ ([0-9]+)[mM] ]]; then
+        TOTAL_SECONDS=$((TOTAL_SECONDS + ${BASH_REMATCH[1]} * 60))
+    elif [[ $part =~ ([0-9]+)[sS] ]]; then
+        TOTAL_SECONDS=$((TOTAL_SECONDS + ${BASH_REMATCH[1]}))
+    elif [[ $part =~ ^[0-9]+$ ]]; then
+        # If just a raw number is given, assume seconds
+        TOTAL_SECONDS=$((TOTAL_SECONDS + part))
+    fi
+done
+
+if [ "$TOTAL_SECONDS" -le 0 ]; then
+    echo "Error: Invalid time duration specified."
+    exit 1
+fi
+
+echo "Timer set for: $TIME_STRING"
+echo "-----------------------------------"
+
+# Countdown loop
+while [ $TOTAL_SECONDS -gt 0 ]; do
+    # Calculate hours, minutes, seconds
+    h=$((TOTAL_SECONDS / 3600))
+    m=$(((TOTAL_SECONDS % 3600) / 60))
+    s=$((TOTAL_SECONDS % 60))
+    
+    # Print formatted output tracking HH:MM:SS
+    printf "\rTime remaining: %02d:%02d:%02d " $h $m $s
+    
+    sleep 1
+    : $((TOTAL_SECONDS--))
+done
+
+printf "\r%-40s\n" ""
+
+echo -e "\033[1;31m$MESSAGE\033[0m"
+
+for i in {1..3}; do echo -e "\a"; sleep 0.1; done
+
+if [ "$USE_NOTIFY" = true ]; then
+    if command -v notify-send &> /dev/null; then
+        notify-send "Timer Alert" "$MESSAGE" -i alarm-clock
+    elif command -v osascript &> /dev/null; then
+        osascript -e "display notification \"$MESSAGE\" with title \"Timer Alert\""
+    else
+        echo "[Warning] Notification utility not found (install 'libnotify-bin' on Linux)."
+    fi
+fi
