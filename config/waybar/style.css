@@ -34,7 +34,9 @@
 #usage,
 #custom-lock,
 #battery,
-#net {
+#net,
+#wireplumber,
+#custom-volumeslider {
     background-color: @background;
     border-radius: 3px;
     padding-left: 0.5em;

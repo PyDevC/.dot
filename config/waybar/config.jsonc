@@ -7,6 +7,7 @@
     ],
     "modules-right": [
         "clock",
+        "custom/volumeslider",
         "group/net",
         "tray",
         "custom/lock"
@@ -30,6 +31,14 @@
     "clock": {
         "timezone": "Asia/Kolkata",
         "format": "{:%H:%M}"
+    },
+    "custom/volumeslider": {
+        "exec": "~/.dot/config/waybar/scripts/volume-slider.sh",
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-",
+        "interval": 1,
+        "tooltip": false
     },
     "memory": {
         "interval": 1,
