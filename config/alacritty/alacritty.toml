@@ -1,0 +1,35 @@
+# Alacritty port of config/ghostty/config
+
+[general]
+import = ["themes/compline.toml"]
+
+[window]
+opacity = 1.00
+# ghostty: gtk-titlebar = false (alacritty has no titlebar-less CSD on Linux)
+decorations = "None"
+
+[scrolling]
+history = 10000
+
+[font]
+size = 14.0
+normal = { family = "JetBrainsMono Nerd Font Mono" }
+bold = { family = "JetBrainsMono Nerd Font Mono", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font Mono", style = "Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Bold Italic" }
+
+[mouse]
+hide_when_typing = true
+
+[terminal]
+shell = "/bin/bash"
+
+[[keyboard.bindings]]
+# Disable Ctrl+Enter fullscreen keybind
+key = "Enter"
+mods = "Control"
+action = "None"
+
+# what is a prefix?
+# { key = "D", mods = "Control", action = "ScrollHalfPageDown" }
+# { key = "U", mods = "Control", action = "ScrollHalfPageUp" }
