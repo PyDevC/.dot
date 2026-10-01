@@ -3,7 +3,6 @@
 dry_run="0"
 
 if [[ -z $XDG_CONFIG_HOME ]]; then
-    # This probably won't happen cause I have $XDG_CONFIG_HOME defined in the .zsh_profile in my dotfiles
     echo "XDG_CONFIG_HOME not present"
     echo "using ~/.config instead"
     XDG_CONFIG_HOME="$HOME/.config"
@@ -16,6 +15,30 @@ log() {
     else
         echo "$1"
     fi
+}
+
+sync-files() {
+    log "copying files to $2 from: $1"
+    pushd $1 &> /dev/null
+    (
+        configs=`find . -mindepth 1 -maxdepth 1 -type f`
+        echo $configs
+        for c in $configs; do
+            file=${2%/}/${c#./}
+
+            log "removing: rm $file"
+            if [[ $dry_run == "0" ]]; then
+                rm $file
+            fi
+
+            log "copying env: cp $c $2"
+            if [[ $dry_run == "0" ]]; then
+                cp ./$c $2
+            fi
+        done
+
+    )
+    popd &> /dev/null
 }
 
 sync-all(){
@@ -47,6 +70,6 @@ if [[ $1 == "--dry-run" ]]; then
 fi
 
 sync-all ~/.dot/config $XDG_CONFIG_HOME
-sync-all ~/.dot/bin $HOME/bin
-cp ~/.dot/.local/* ~/.local/share/applications
+sync-files ~/.dot/.local ~/.local/share/applications
+sync-files ~/.dot/bin ~/bin
 . ~/.dot/bin/explorer_bookmarks.sh
