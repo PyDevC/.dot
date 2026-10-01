@@ -7,9 +7,11 @@ echo "cleaning bookmarks..."
 echo "" > $bookmark_path
 
 for dir in ${b_dir[@]}; do
-    bookmark="file:///home/$USER/$dir"
-    echo "$bookmark"
-    echo $bookmark >> $bookmark_path
+    if [[ -d "$HOME/$dir" ]]; then
+        bookmark="file:///home/$USER/$dir"
+        echo "$bookmark"
+        echo $bookmark >> $bookmark_path
+    fi
 done
 
 echo "created bookmarks"
