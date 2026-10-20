@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-WALLPAPER_DIR="$HOME/Wallpapers"
+WALLPAPER_DIR="$HOME/Pictures/wallpapers-backup/"
 
 ls "$WALLPAPER_DIR" | while read -r wallpaper_file; do
     if [ -f "$WALLPAPER_DIR/$wallpaper_file" ]; then
@@ -19,7 +19,7 @@ done | rofi \
     # Check if a selection was made (rofi returns an empty string on cancel)
     if [ -n "$selected_wallpaper" ]; then
         # Set the wallpaper using swww
-        swww img -t grow "$WALLPAPER_DIR/$selected_wallpaper"
+        awww img -t grow "$WALLPAPER_DIR/$selected_wallpaper"
         if [[ ! -f ~/wallpaper_image_path.path ]]; then
             touch ~/wallpaper_image_path.path
         fi
