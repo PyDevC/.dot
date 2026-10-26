@@ -3,7 +3,8 @@
     "position": "top",
     "height": 10,
     "modules-left": [
-        "hyprland/workspaces"
+        "hyprland/workspaces",
+        "sway/workspaces"
     ],
     "modules-right": [
         "clock",
@@ -22,6 +23,13 @@
         ]
     },
     "hyprland/workspaces": {
+        "format": "{icon}",
+        "on-click": "activate",
+        "format-icons": {},
+        "icon-size": 30,
+        "sort-by-number": true
+    },
+    "sway/workspaces": {
         "format": "{icon}",
         "on-click": "activate",
         "format-icons": {},

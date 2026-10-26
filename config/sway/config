@@ -47,7 +47,7 @@ set $lock 'swaylock \
 # Set XDG_CURRENT_DESKTOP for proper Wayland support
 exec --no-startup-id dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 
-exec --no-startup-id skwd-walld
+exec --no-startup-id awww-daemon
 exec --no-startup-id waybar
 exec --no-startup-id dunst
 exec --no-startup-id /usr/libexec/hyprpolkitagent
